@@ -6,8 +6,7 @@ sudo apt-get install -y --force-yes sed wget cvs subversion git bzr coreutils un
 
 # clone repositories
 
-#git clone git://git.linaro.org/openembedded/meta-linaro.git
-git clone git://github.com/rsalveti/meta-linaro.git
+git clone git://git.linaro.org/openembedded/meta-linaro.git
 git clone git://git.openembedded.org/meta-openembedded
 
 # ugly hack
