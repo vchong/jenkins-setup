@@ -2,11 +2,12 @@
 
 # install required packages
 
-apt-get install -y --force-yes sed wget cvs subversion git bzr coreutils unzip bzip2 tar gzip cpio gawk python patch diffstat make build-essential gcc g++ desktop-file-utils chrpath autoconf automake libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev texi2html texinfo realpath
+sudo apt-get install -y --force-yes sed wget cvs subversion git bzr coreutils unzip bzip2 tar gzip cpio gawk python patch diffstat make build-essential gcc g++ desktop-file-utils chrpath autoconf automake libgl1-mesa-dev libglu1-mesa-dev libsdl1.2-dev texi2html texinfo realpath
 
 # clone repositories
 
-git clone git://git.linaro.org/openembedded/meta-linaro.git
+#git clone git://git.linaro.org/openembedded/meta-linaro.git
+git clone git://github.com/rsalveti/meta-linaro.git
 git clone git://git.openembedded.org/meta-openembedded
 
 # ugly hack
@@ -38,8 +39,8 @@ echo 'SDKGCCVERSION = "linaro-4.7"' 					>>conf/site.conf
 echo 'INHERIT += "rm_work"' 							>>conf/site.conf
 echo 'BB_GENERATE_MIRROR_TARBALLS = "True"' 			>>conf/site.conf
 echo 'MACHINE = "genericarmv7a"'						>>conf/site.conf
-echo 'BB_NUMBER_THREADS = "4"'							>>conf/site.conf
-echo 'PARALLEL_MAKE = "-j4"'							>>conf/site.conf
+echo 'BB_NUMBER_THREADS = "8"'							>>conf/site.conf
+echo 'PARALLEL_MAKE = "-j8"'							>>conf/site.conf
 echo 'IMAGE_FSTYPES = "tar.gz"'						>>conf/site.conf
 
 # enable source mirror
@@ -50,6 +51,10 @@ echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
 # enable sstate mirror
 
 echo 'SSTATE_MIRRORS = "file://.* http://snapshots.linaro.org/openembedded/sstate-cache/"' >>conf/site.conf
+
+# enable a distro feature that is compatible with the minimal goal we have
+
+echo 'DISTRO_FEATURES = "alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC}"' >>conf/site.conf
 
 # get rid of MACHINE setting from local.conf
 
