@@ -10,7 +10,7 @@ git clone git://git.linaro.org/openembedded/meta-linaro.git
 git clone git://git.openembedded.org/meta-openembedded
 
 # ugly hack
-rm meta-openembedded/meta-oe/recipes-extended/lighttpd -rf
+rm meta-openembedded/toolchain-layer/recipes-devtools/gcc/gcc*intermediate*.bb
 
 git clone git://git.openembedded.org/openembedded-core
 cd openembedded-core/
