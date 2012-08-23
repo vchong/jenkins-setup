@@ -49,7 +49,7 @@ echo 'IMAGE_FSTYPES = "tar.gz"'						>>conf/site.conf
 
 # enable source mirror
 
-echo 'SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"' >>conf/site.conf
+echo 'SOURCE_MIRROR_URL = "http://people.linaro.org/~hrw/sources/"' >>conf/site.conf
 echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
 
 # enable sstate mirror
