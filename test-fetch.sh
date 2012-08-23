@@ -6,6 +6,6 @@ source $DIR/init.sh
 
 # do build
 
-bitbake -cfetchall pseudo-native
+bitbake -cfetchall linaro-image-sdk linaro-image-lamp
 
 prepare_for_publish

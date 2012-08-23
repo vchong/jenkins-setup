@@ -19,6 +19,11 @@ git clone git://git.openembedded.org/bitbake
 # let's start build
 . oe-init-build-env ../build
 
+# we got fetch failure in previous build and manual work is needed. so fetch again instead
+pushd downloads/svn
+mv www.eglibc.org www.eglibc.org-
+popd
+
 # add required layers
 
 echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-oe`'" >>conf/bblayers.conf 
