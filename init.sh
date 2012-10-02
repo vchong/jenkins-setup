@@ -62,15 +62,17 @@ sed -i -e "s/^MACHINE.*//g" conf/local.conf
 prepare_for_publish () {
     # some stuff to be run after build
     pushd downloads
-    rm *.done -f
+    rm -f '*.done' 
     rm -rf git2 svn cvs bzr # we publish files not SCM dirs
     popd
 
     pushd sstate-cache/
-    rm `find . -type l`
-    rm *.done -f
-    mv */* . || true
-    mv */*/* . || true
-    rm -rf ?? Ubuntu-*
+    rm -f `find . -type l`
+    rm -f *.done
+    mv '*/*' . || true
+    mv '*/*/*' . || true
+    rm -rf '??' 'Ubuntu-*'
     popd
+
+    ls tmp-eglibc/deploy/images/ -l
 }
