@@ -49,7 +49,7 @@ echo 'SSTATE_MIRRORS = "file://.* http://snapshots.linaro.org/openembedded/sstat
 
 # enable a distro feature that is compatible with the minimal goal we have
 
-echo 'DISTRO_FEATURES = "alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC}"' >>conf/site.conf
+echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC}"' >>conf/site.conf
 
 # get rid of MACHINE setting from local.conf
 
