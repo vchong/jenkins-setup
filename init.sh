@@ -27,6 +27,7 @@ popd
 # add required layers
 
 echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-oe`'" >>conf/bblayers.conf 
+echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-webserver`'" >>conf/bblayers.conf
 echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'" >>conf/bblayers.conf 
 echo "BBLAYERS += '`realpath $PWD/../meta-linaro`'" >>conf/bblayers.conf
 echo "BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'" >>conf/bblayers.conf 
