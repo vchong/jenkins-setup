@@ -21,7 +21,7 @@ git clone git://git.openembedded.org/bitbake
 # add required layers
 
 echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-oe`'" >>conf/bblayers.conf 
-echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-webserver`'" >>conf/bblayers.conf
+echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'" >>conf/bblayers.conf
 echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'" >>conf/bblayers.conf 
 echo "BBLAYERS += '`realpath $PWD/../meta-aarch64`'" >>conf/bblayers.conf
 echo "BBLAYERS += '`realpath $PWD/../meta-linaro`'" >>conf/bblayers.conf
