@@ -51,21 +51,3 @@ echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nf
 # get rid of MACHINE setting from local.conf
 
 sed -i -e "s/^MACHINE.*//g" conf/local.conf
-
-prepare_for_publish () {
-    # some stuff to be run after build
-    pushd downloads
-    rm -f '*.done' 
-    rm -rf git2 svn cvs bzr # we publish files not SCM dirs
-    popd
-
-    pushd sstate-cache/
-    rm -f `find . -type l`
-    rm -f *.done
-    mv '*/*' . || true
-    mv '*/*/*' . || true
-    rm -rf '??' 'Ubuntu-*'
-    popd
-
-    ls tmp-eglibc/deploy/images/ -l
-}
