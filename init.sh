@@ -35,7 +35,7 @@ echo "BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'" >>conf/bblayers.c
 
 # Add some Linaro related options
 
-echo 'SCONF_VERSION = "1"'					 			>>conf/site.conf
+echo 'SCONF_VERSION = "1"'					 			>conf/site.conf
 echo '# specify the alignment of the root file system' 	>>conf/site.conf
 echo '# this is required when building for qemuarmv7a' 	>>conf/site.conf
 echo 'IMAGE_ROOTFS_ALIGNMENT = "2048"' 					>>conf/site.conf
