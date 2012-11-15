@@ -2,13 +2,24 @@
 
 # clone repositories
 
-git clone git://git.linaro.org/openembedded/meta-aarch64.git
-git clone git://git.linaro.org/openembedded/meta-linaro.git
-git clone git://git.openembedded.org/meta-openembedded
+if [ ! -d meta-aarch64/conf ]; then
+	git clone git://git.linaro.org/openembedded/meta-aarch64.git
+fi
+if [ ! -d meta-linaro/conf ]; then
+	git clone git://git.linaro.org/openembedded/meta-linaro.git
+fi
+if [ ! -d meta-openembedded/meta-oe ]; then
+	git clone git://git.openembedded.org/meta-openembedded
+fi
+if [ ! -d openembedded-core/meta ]; then
+	git clone git://git.openembedded.org/openembedded-core
+fi
 
-git clone git://git.openembedded.org/openembedded-core
 cd openembedded-core/
-git clone git://git.openembedded.org/bitbake
+
+if [ ! -d bitbake/conf ]; then
+	git clone git://git.openembedded.org/bitbake
+fi
 
 # let's start build
 . oe-init-build-env ../build
