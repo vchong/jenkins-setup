@@ -47,6 +47,9 @@ echo 'PARALLEL_MAKE = "-j8"'							>>conf/site.conf
 echo 'IMAGE_FSTYPES = "tar.gz ext2"'					>>conf/site.conf
 echo 'IMAGE_LINGUAS = "en-gb"'					>>conf/site.conf
 
+# share downloads and sstate-cache between all builds
+echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
+echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
 # enable source mirror
 
 echo 'SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"' >>conf/site.conf
