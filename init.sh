@@ -54,7 +54,8 @@ echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
 
 # enable sstate mirror
 
-echo 'SSTATE_MIRRORS = "file://.* http://snapshots.linaro.org/openembedded/sstate-cache/"' >>conf/site.conf
+# disabled for now - we do not have it yet
+#echo 'SSTATE_MIRRORS = "file://.* http://snapshots.linaro.org/openembedded/sstate-cache/"' >>conf/site.conf
 
 # enable a distro feature that is compatible with the minimal goal we have
 
