@@ -45,6 +45,7 @@ echo 'MACHINE = "genericarmv8"'							>>conf/site.conf
 echo 'BB_NUMBER_THREADS = "8"'							>>conf/site.conf
 echo 'PARALLEL_MAKE = "-j8"'							>>conf/site.conf
 echo 'IMAGE_FSTYPES = "tar.gz ext2"'					>>conf/site.conf
+echo 'IMAGE_LINGUAS = "en-gb"'					>>conf/site.conf
 
 # enable source mirror
 
