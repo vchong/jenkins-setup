@@ -1,10 +1,16 @@
 #!/bin/bash
 
 arch=armv8
+gcc=4.7
 
-if [ -n $2 ];
+if [ ! -z $2 ];
 then
 	arch=$2
+fi
+
+if [ ! -z $3 ];
+then
+	gcc=$3
 fi
 
 # clone repositories
@@ -53,8 +59,8 @@ echo 'BB_NUMBER_THREADS = "8"'							>>conf/site.conf
 echo 'PARALLEL_MAKE = "-j8"'							>>conf/site.conf
 echo 'IMAGE_FSTYPES = "tar.gz ext2.gz"'					>>conf/site.conf
 echo 'IMAGE_LINGUAS = "en-gb"'					>>conf/site.conf
-echo 'GCCVERSION       ?= "linaro-4.7"'					>>conf/site.conf
-echo 'SDKGCCVERSION    ?= "linaro-4.7"'					>>conf/site.conf
+echo "GCCVERSION       ?= \"linaro-${gcc}\""					>>conf/site.conf
+echo "SDKGCCVERSION    ?= \"linaro-${gcc}\""					>>conf/site.conf
 
 # share downloads and sstate-cache between all builds
 echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
