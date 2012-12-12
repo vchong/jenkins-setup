@@ -1,5 +1,12 @@
 #!/bin/bash
 
+arch=armv8
+
+if [ -n $2 ];
+then
+	arch=$2
+fi
+
 # clone repositories
 
 if [ ! -d meta-aarch64/conf ]; then
@@ -41,7 +48,7 @@ echo '# this is required when building for qemuarmv7a' 	>>conf/site.conf
 echo 'IMAGE_ROOTFS_ALIGNMENT = "2048"' 					>>conf/site.conf
 echo 'INHERIT += "rm_work"' 							>>conf/site.conf
 echo 'BB_GENERATE_MIRROR_TARBALLS = "True"' 			>>conf/site.conf
-echo 'MACHINE = "genericarmv8"'							>>conf/site.conf
+echo "MACHINE = \"generic${arch}\""						>>conf/site.conf
 echo 'BB_NUMBER_THREADS = "8"'							>>conf/site.conf
 echo 'PARALLEL_MAKE = "-j8"'							>>conf/site.conf
 echo 'IMAGE_FSTYPES = "tar.gz ext2.gz"'					>>conf/site.conf
