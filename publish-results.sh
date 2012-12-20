@@ -7,8 +7,10 @@ rm ${WORKSPACE}/downloads/*.done
 
 # provide manifest for images
 cd build/tmp-eglibc/deploy/images/
-for img in *-201*.ext2.gz
+for img in *.ext2.gz
 do
-	img=`basename $img .rootfs.ext2.gz`
-	cp ../licenses/$img/license.manifest $img.manifest
+	if ! [ -h $img ] ; then
+		img=`basename $img .rootfs.ext2.gz`
+		cp ../licenses/$img/license.manifest $img.manifest
+	fi
 done
