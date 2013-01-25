@@ -28,6 +28,28 @@ if [ ! -d openembedded-core/meta ]; then
 	git clone git://git.openembedded.org/openembedded-core
 fi
 
+# 13.01 release freeze
+
+pushd meta-aarch64
+git checkout f8186a83df1aed785e0e2bfb0ba3101c0a1fab47
+popd
+
+pushd meta-linaro
+git checkout f8628eb5f11f0295c5e346c583b6124a0fb94341
+popd
+
+pushd meta-openembedded
+git checkout e2012416a6588215ad07ce5575dbd15f149bf20c
+popd
+
+pushd openembedded-core
+git checkout 9a43a67993c21cedf6cf71138e3da9c691ebf4a7
+popd
+
+pushd openembedded-core/bitbake
+git checkout 20222f2f16130e91eed5e68286188ee0e8f8f3bf
+popd
+
 cd openembedded-core/
 
 if [ ! -d bitbake/conf ]; then
