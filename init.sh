@@ -35,7 +35,7 @@ git checkout f8186a83df1aed785e0e2bfb0ba3101c0a1fab47
 popd
 
 pushd meta-linaro
-git checkout 98e2700535a476c64d632c8a8099e34b3ea9e050
+git checkout c6a309fa792bd608046e2d76f475b0cec61045ff
 popd
 
 pushd meta-openembedded
