@@ -84,6 +84,10 @@ echo 'IMAGE_LINGUAS = "en-gb"'					>>conf/site.conf
 echo "GCCVERSION       ?= \"linaro-${gcc}\""					>>conf/site.conf
 echo "SDKGCCVERSION    ?= \"linaro-${gcc}\""					>>conf/site.conf
 
+# set some preferred providers
+#  we need libevent-fb for hiphopvm
+echo 'PREFERRED_PROVIDER_libevent = "libevent-fb"' >>conf/site.conf
+
 # share downloads and sstate-cache between all builds
 echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
 echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
