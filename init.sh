@@ -13,19 +13,27 @@ then
 	gcc=$3
 fi
 
-# clone repositories
+# clone/update repositories
 
 if [ ! -d meta-aarch64/conf ]; then
 	git clone git://git.linaro.org/openembedded/meta-aarch64.git
+else
+	pushd meta-aarch64;git pull;popd
 fi
 if [ ! -d meta-linaro/conf ]; then
 	git clone git://git.linaro.org/openembedded/meta-linaro.git
+else
+	pushd meta-linaro;git pull;popd
 fi
 if [ ! -d meta-openembedded/meta-oe ]; then
 	git clone git://git.openembedded.org/meta-openembedded
+else
+	pushd meta-openembedded;git pull;popd
 fi
 if [ ! -d openembedded-core/meta ]; then
 	git clone git://git.openembedded.org/openembedded-core
+else
+	pushd openembedded-core;git pull;popd
 fi
 
 # 13.01 release freeze
@@ -54,6 +62,8 @@ cd openembedded-core/
 
 if [ ! -d bitbake/conf ]; then
 	git clone git://git.openembedded.org/bitbake
+else
+	pushd bitbake;git pull;popd
 fi
 
 # let's start build
