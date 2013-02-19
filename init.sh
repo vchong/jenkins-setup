@@ -119,7 +119,7 @@ echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nf
 
 sed -i -e "s/^MACHINE.*//g" conf/local.conf
 
-if [ -n $1 ];
+if [ -n "$1" ];
 then
 	bitbake $1
 fi
