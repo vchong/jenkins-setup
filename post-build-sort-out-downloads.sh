@@ -1,5 +1,6 @@
 #!/bin/bash
 
+rm -rf ${WORKSPACE}/downloads
 mkdir -p ${WORKSPACE}/downloads
 
 pushd ${WORKSPACE}/downloads
