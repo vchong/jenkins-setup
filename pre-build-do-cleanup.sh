@@ -5,6 +5,10 @@
 rm -rf /mnt/ci_build/workspace/openembedded-armv8-rootfs/label/*/*/*/build
 rm -rf /mnt/ci_build/workspace/openembedded-armv7a-lamp/gcc_version/*/label/*/build
 
+# those should not exist but they may
+rm -rf /mnt/ci_build/workspace/openembedded-armv8-rootfs/label/*/*/*/downloads
+rm -rf /mnt/ci_build/workspace/openembedded-armv7a-lamp/gcc_version/*/label/*/downloads
+
 # || true as some of those dirs may not exist
 du -hs /mnt/ci_build/workspace/openembedded-armv8-rootfs/label/ \
        /mnt/ci_build/workspace/openembedded-armv7a-lamp/gcc_version/ \
