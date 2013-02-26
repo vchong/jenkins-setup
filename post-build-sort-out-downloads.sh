@@ -12,7 +12,7 @@ wget http://snapshots.linaro.org/openembedded/sources
 
 for src in `grep 'alt="other"' sources |sed -e 's+.*">\(.*\)</a.*+\1+g'`
 do
-	rm $src
+	rm -f $src
 done
 
 popd
