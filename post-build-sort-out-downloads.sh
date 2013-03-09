@@ -10,7 +10,7 @@ rm *.done
 # remove all sources which were already pushed
 wget http://snapshots.linaro.org/openembedded/sources
 
-for src in `grep 'alt="other"' sources |sed -e 's+.*">\(.*\)</a.*+\1+g'`
+for src in ` grep 'a href="/openem' sources |sed -e 's+.*sources\/\(.*\)"+\1+g' | egrep -v ^git2_git.linaro.*linux`
 do
 	rm -f $src
 done
