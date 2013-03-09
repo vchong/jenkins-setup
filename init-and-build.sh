@@ -106,8 +106,8 @@ fi
 
 # enable source mirror
 
-echo 'SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"' >>conf/site.conf
-echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
+#echo 'SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"' >>conf/site.conf
+#echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
 
 # enable sstate mirror
 
