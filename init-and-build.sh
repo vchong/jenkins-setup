@@ -98,9 +98,12 @@ echo "SDKGCCVERSION    ?= \"linaro-${gcc}\""					>>conf/site.conf
 #  we need libevent-fb for hiphopvm
 echo 'PREFERRED_PROVIDER_libevent = "libevent-fb"' >>conf/site.conf
 
-# share downloads and sstate-cache between all builds
-echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
-echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
+if [ -n "${WORKSPACE}" ]; then
+    # share downloads and sstate-cache between all builds
+    echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
+    echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
+fi
+
 # enable source mirror
 
 echo 'SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"' >>conf/site.conf
