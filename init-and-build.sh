@@ -15,11 +15,6 @@ fi
 
 # clone/update repositories
 
-if [ ! -d meta-aarch64/conf ]; then
-	git clone git://git.linaro.org/openembedded/meta-aarch64.git
-else
-	pushd meta-aarch64;git pull;popd
-fi
 if [ ! -d meta-linaro/conf ]; then
 	git clone git://git.linaro.org/openembedded/meta-linaro.git
 else
@@ -38,10 +33,6 @@ fi
 
 # 13.01 release freeze
 
-# pushd meta-aarch64
-# git checkout f8186a83df1aed785e0e2bfb0ba3101c0a1fab47
-# popd
-# 
 # pushd meta-linaro
 # git checkout c6a309fa792bd608046e2d76f475b0cec61045ff
 # popd
@@ -74,8 +65,9 @@ fi
 echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-oe`'" >>conf/bblayers.conf 
 echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'" >>conf/bblayers.conf
 echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'" >>conf/bblayers.conf 
-echo "BBLAYERS += '`realpath $PWD/../meta-aarch64`'" >>conf/bblayers.conf
-echo "BBLAYERS += '`realpath $PWD/../meta-linaro`'" >>conf/bblayers.conf
+echo "BBLAYERS += '`realpath $PWD/../meta-linaro/meta-aarch64`'" >>conf/bblayers.conf
+echo "BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'" >>conf/bblayers.conf
+echo "BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'" >>conf/bblayers.conf
 echo "BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'" >>conf/bblayers.conf 
 
 # Add some Linaro related options
