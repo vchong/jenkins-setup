@@ -15,6 +15,14 @@ fi
 
 # clone/update repositories
 
+# old checkout of meta-linaro
+if [ ! -d meta-linaro/conf ]; then
+	git clone git://git.linaro.org/openembedded/meta-linaro.git
+else
+	pushd meta-linaro;git pull;popd
+fi
+
+# new checkout of meta-linaro
 if [ ! -d meta-linaro/meta-linaro/conf ]; then
 	git clone git://git.linaro.org/openembedded/meta-linaro.git
 else
