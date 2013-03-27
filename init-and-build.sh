@@ -41,21 +41,21 @@ fi
 
 # 13.03 release freeze
 
-pushd meta-linaro
-git checkout 9ba698baa24d78b9400292c7738ad34edaf63e05
-popd
+# pushd meta-linaro
+# git checkout 9ba698baa24d78b9400292c7738ad34edaf63e05
+# popd
 
-pushd meta-openembedded
-git checkout 6cbd81ed18465affba841311ec1cdf3eb6800dba
-popd
+# pushd meta-openembedded
+# git checkout 6cbd81ed18465affba841311ec1cdf3eb6800dba
+# popd
 
-pushd openembedded-core
-git checkout d9130e5113c8f93f327fbe19dbfe39036c1c3995
-popd
+# pushd openembedded-core
+# git checkout d9130e5113c8f93f327fbe19dbfe39036c1c3995
+# popd
 
-pushd openembedded-core/bitbake
-git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
-popd
+# pushd openembedded-core/bitbake
+# git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
+# popd
 
 cd openembedded-core/
 
