@@ -104,7 +104,7 @@ if [ -n "${WORKSPACE}" ]; then
     echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
 
     # LP: #1161808
-    echo 'IMAGE_NAME = "${IMAGE_BASENAME}-${MACHINE}-${DATE}-${BUILD_NUMBER}"' >>conf/site.conf
+    echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
 fi
 
 # enable source mirror
