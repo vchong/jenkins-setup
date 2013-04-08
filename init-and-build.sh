@@ -39,6 +39,14 @@ else
 	pushd openembedded-core;git pull;popd
 fi
 
+cd openembedded-core/
+
+if [ ! -d bitbake/conf ]; then
+	git clone git://git.openembedded.org/bitbake
+else
+	pushd bitbake;git pull;popd
+fi
+
 # 13.03 release freeze
 
 # pushd meta-linaro
@@ -56,14 +64,6 @@ fi
 # pushd openembedded-core/bitbake
 # git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
 # popd
-
-cd openembedded-core/
-
-if [ ! -d bitbake/conf ]; then
-	git clone git://git.openembedded.org/bitbake
-else
-	pushd bitbake;git pull;popd
-fi
 
 # let's start build
 . oe-init-build-env ../build
