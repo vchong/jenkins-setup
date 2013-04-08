@@ -87,11 +87,17 @@ SCONF_VERSION = "1"
 # specify the alignment of the root file system
 # this is required when building for qemuarmv7a
 IMAGE_ROOTFS_ALIGNMENT = "2048"
+
+# to save space we remove source after build
 INHERIT += "rm_work"
 BB_GENERATE_MIRROR_TARBALLS = "True"
 MACHINE = "generic${arch}"
+
+# those numbers can be tweaked if build takes too much power
 BB_NUMBER_THREADS = "8"
 PARALLEL_MAKE = "-j8"
+
+# add 'ext2' if you want images for fast models
 IMAGE_FSTYPES = "tar.gz"
 IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
