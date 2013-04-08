@@ -90,7 +90,7 @@ IMAGE_ROOTFS_ALIGNMENT = "2048"
 
 # to save space we remove source after build
 INHERIT += "rm_work"
-BB_GENERATE_MIRROR_TARBALLS = "True"
+
 MACHINE = "generic${arch}"
 
 # those numbers can be tweaked if build takes too much power
@@ -100,6 +100,7 @@ PARALLEL_MAKE = "-j8"
 # add 'ext2' if you want images for fast models
 IMAGE_FSTYPES = "tar.gz"
 IMAGE_LINGUAS = "en-gb"
+
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 
@@ -117,13 +118,13 @@ EOF
 #echo 'SSTATE_MIRRORS = "file://.* http://snapshots.linaro.org/openembedded/sstate-cache/"' >>conf/site.conf
 
 # enable a distro feature that is compatible with the minimal goal we have
-
 echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC} ${DISTRO_FEATURES_INITMAN}"' >>conf/site.conf
 
 if [ -n "${WORKSPACE}" ]; then
     # share downloads and sstate-cache between all builds
     echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
     echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
+    echo 'BB_GENERATE_MIRROR_TARBALLS = "True"' >>conf/site.conf
 
     # LP: #1161808
     echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
