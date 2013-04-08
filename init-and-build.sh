@@ -134,7 +134,7 @@ fi
 
 sed -i -e "s/^MACHINE.*//g" conf/local.conf
 
-if [ 6 -eq `date +%w` ]; then
+if [ 1 -eq `date +%w` ]; then
 	../openembedded-core/scripts/sstate-cache-management.sh --yes --remove-duplicated \
 		--extra-layer ../meta-linaro/meta-aarch64,../meta-linaro/meta-linaro,\
 		../meta-linaro/meta-linaro-toolchain,../meta-openembedded/meta-oe,\
