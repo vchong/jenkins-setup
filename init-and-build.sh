@@ -96,25 +96,14 @@ IMAGE_FSTYPES = "tar.gz"
 IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
-EOF
 
-# set some preferred providers
-#  we need libevent-fb for hiphopvm
-echo 'PREFERRED_PROVIDER_libevent = "libevent-fb"' >>conf/site.conf
-
-if [ -n "${WORKSPACE}" ]; then
-    # share downloads and sstate-cache between all builds
-    echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
-    echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
-
-    # LP: #1161808
-    echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
-fi
+# we need libevent-fb for hiphopvm
+PREFERRED_PROVIDER_libevent = "libevent-fb"
 
 # enable source mirror
-
-echo 'SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"' >>conf/site.conf
-echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
+SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
+INHERIT += "own-mirrors"
+EOF
 
 # enable sstate mirror
 
@@ -124,6 +113,15 @@ echo 'INHERIT += "own-mirrors"' 								>>conf/site.conf
 # enable a distro feature that is compatible with the minimal goal we have
 
 echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC} ${DISTRO_FEATURES_INITMAN}"' >>conf/site.conf
+
+if [ -n "${WORKSPACE}" ]; then
+    # share downloads and sstate-cache between all builds
+    echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
+    echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
+
+    # LP: #1161808
+    echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
+fi
 
 # get rid of MACHINE setting from local.conf
 
