@@ -70,29 +70,33 @@ fi
 
 # add required layers
 
-echo "BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-oe`'" >>conf/bblayers.conf 
-echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'" >>conf/bblayers.conf
-echo "BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'" >>conf/bblayers.conf 
-echo "BBLAYERS += '`realpath $PWD/../meta-linaro/meta-aarch64`'" >>conf/bblayers.conf
-echo "BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'" >>conf/bblayers.conf
-echo "BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'" >>conf/bblayers.conf
-echo "BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'" >>conf/bblayers.conf 
+cat >> conf/bblayers.conf <<EOF
+BBLAYERS = '`realpath $PWD/../meta-openembedded/meta-oe`'
+BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'
+BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'
+BBLAYERS += '`realpath $PWD/../meta-linaro/meta-aarch64`'
+BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'
+BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
+BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'
+EOF
 
 # Add some Linaro related options
 
-echo 'SCONF_VERSION = "1"'					 			>conf/site.conf
-echo '# specify the alignment of the root file system' 	>>conf/site.conf
-echo '# this is required when building for qemuarmv7a' 	>>conf/site.conf
-echo 'IMAGE_ROOTFS_ALIGNMENT = "2048"' 					>>conf/site.conf
-echo 'INHERIT += "rm_work"' 							>>conf/site.conf
-echo 'BB_GENERATE_MIRROR_TARBALLS = "True"' 			>>conf/site.conf
-echo "MACHINE = \"generic${arch}\""						>>conf/site.conf
-echo 'BB_NUMBER_THREADS = "8"'							>>conf/site.conf
-echo 'PARALLEL_MAKE = "-j8"'							>>conf/site.conf
-echo 'IMAGE_FSTYPES = "tar.gz"'					>>conf/site.conf
-echo 'IMAGE_LINGUAS = "en-gb"'					>>conf/site.conf
-echo "GCCVERSION       ?= \"linaro-${gcc}\""					>>conf/site.conf
-echo "SDKGCCVERSION    ?= \"linaro-${gcc}\""					>>conf/site.conf
+cat > conf/site.conf <<EOF
+SCONF_VERSION = "1"
+# specify the alignment of the root file system
+# this is required when building for qemuarmv7a
+IMAGE_ROOTFS_ALIGNMENT = "2048"
+INHERIT += "rm_work"
+BB_GENERATE_MIRROR_TARBALLS = "True"
+MACHINE = "generic${arch}"
+BB_NUMBER_THREADS = "8"
+PARALLEL_MAKE = "-j8"
+IMAGE_FSTYPES = "tar.gz"
+IMAGE_LINGUAS = "en-gb"
+GCCVERSION       ?= "linaro-${gcc}"
+SDKGCCVERSION    ?= "linaro-${gcc}"
+EOF
 
 # set some preferred providers
 #  we need libevent-fb for hiphopvm
