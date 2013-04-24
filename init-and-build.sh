@@ -39,6 +39,13 @@ else
 	pushd openembedded-core;git pull;popd
 fi
 
+# add meta-java for Andy Johnson
+if [ ! -d meta-java/README ]; then
+	git clone git://git.openembedded.org/meta-openembedded
+else
+	pushd meta-java;git pull;popd
+fi
+
 cd openembedded-core/
 
 if [ ! -d bitbake/conf ]; then
@@ -77,6 +84,7 @@ BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-aarch64`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
+BBLAYERS += '`realpath $PWD/../meta-java`'
 BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'
 EOF
 
@@ -106,6 +114,12 @@ SDKGCCVERSION    ?= "linaro-${gcc}"
 
 # we need libevent-fb for hiphopvm
 PREFERRED_PROVIDER_libevent = "libevent-fb"
+
+# some options for Andy's work on OpenJDK for AArch64
+PREFERRED_PROVIDER_virtual/java-native = "jamvm-native"
+PREFERRED_PROVIDER_virtual/javac-native = "ecj-bootstrap-native"
+PREFERRED_VERSION_openjdk-7-jre = "03b21-2.1.7"
+PREFERRED_VERSION_icedtea7-native = "2.1.3"
 
 # enable source mirror
 SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
