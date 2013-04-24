@@ -47,23 +47,23 @@ else
 	pushd bitbake;git pull;popd
 fi
 
-# 13.04 release freeze
+# 13.03 release freeze
 
-pushd meta-linaro
-git checkout bc0e858b4751fb3ad9f7a2781318ec7f0945e0a2
-popd
+# pushd meta-linaro
+# git checkout 9ba698baa24d78b9400292c7738ad34edaf63e05
+# popd
 
-pushd meta-openembedded
-git checkout 2a5dea2399e2be5e5d964eda7465dcaf4c2e152b
-popd
+# pushd meta-openembedded
+# git checkout 6cbd81ed18465affba841311ec1cdf3eb6800dba
+# popd
 
-pushd openembedded-core
-git checkout 395b90054eccddc1c9062a9a8657ed4482b7710a
-popd
+# pushd openembedded-core
+# git checkout d9130e5113c8f93f327fbe19dbfe39036c1c3995
+# popd
 
-pushd openembedded-core/bitbake
-git checkout 389a4ab300465f7e461eff52bc80646246c359d5
-popd
+# pushd openembedded-core/bitbake
+# git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
+# popd
 
 # let's start build
 . oe-init-build-env ../build
