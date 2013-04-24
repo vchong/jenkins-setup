@@ -41,7 +41,7 @@ fi
 
 # add meta-java for Andy Johnson
 if [ ! -d meta-java/README ]; then
-	git clone git://git.openembedded.org/meta-openembedded
+	git clone https://github.com/woglinde/meta-java.git
 else
 	pushd meta-java;git pull;popd
 fi
