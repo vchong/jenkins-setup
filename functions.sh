@@ -7,7 +7,7 @@ show_setup()
     echo "GCC version: $gcc"
     echo "Target architecture: $arch"
 
-    if [ $external_url ];then
+    if [ $external_url ]; then
         echo "External toolchain URL: $external_url"
     fi
     echo ""
