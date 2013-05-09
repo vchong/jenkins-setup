@@ -128,14 +128,16 @@ IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 
-# we need libevent-fb for hiphopvm
+# some options needed for HipHopVM
 PREFERRED_PROVIDER_libevent = "libevent-fb"
+PREFERRED_VERSION_libmemcached = "1.0.7"
 
 # some options for Andy's work on OpenJDK for AArch64
 PREFERRED_PROVIDER_virtual/java-native = "jamvm-native"
 PREFERRED_PROVIDER_virtual/javac-native = "ecj-bootstrap-native"
 PREFERRED_VERSION_openjdk-7-jre = "03b21-2.1.7"
 PREFERRED_VERSION_icedtea7-native = "2.1.3"
+
 
 # enable source mirror
 SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
