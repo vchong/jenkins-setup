@@ -48,4 +48,4 @@ conf_localconf
 conf_toolchain
 conf_jenkins
 
-bitbake $@
+#bitbake $@
