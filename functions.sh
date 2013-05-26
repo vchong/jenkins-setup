@@ -47,7 +47,7 @@ fi
 
 # add meta-java for Andy Johnson
 if [ ! -d meta-java/conf ]; then
-    git clone https://github.com/woglinde/meta-java.git
+    git clone git://github.com/woglinde/meta-java.git
 else
     git_pull meta-java
 fi
