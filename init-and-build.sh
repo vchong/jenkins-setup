@@ -48,4 +48,5 @@ conf_localconf
 conf_toolchain
 conf_jenkins
 
+bitbake -ccleansstate libunwind||true # hack until gcc/libunwind is fixed
 bitbake $@
