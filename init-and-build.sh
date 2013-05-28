@@ -50,7 +50,7 @@ conf_jenkins
 
 # workaround for LP: #1183087
 if [ $jenkins ]; then
-	if [ `echo "$@" | grep lamp` ];then
+	if [ "`echo "$@" | grep lamp`" ];then
 		bitbake -ccleansstate libunwind
 		bitbake gcc
 	fi
