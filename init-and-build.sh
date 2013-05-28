@@ -48,5 +48,12 @@ conf_localconf
 conf_toolchain
 conf_jenkins
 
-bitbake -ccleansstate libunwind||true # hack until gcc/libunwind is fixed
+# workaround for LP: #1183087
+if [ $jenkins ]; then
+	if [ `echo "$@" | grep lamp` ];then
+		bitbake -ccleansstate libunwind
+		bitbake gcc
+	fi
+fi
+
 bitbake $@
