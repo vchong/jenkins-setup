@@ -163,8 +163,8 @@ conf_toolchain()
 
         if [ ! -e $local_tarball_name ];then
             wget -c $external_url -O $local_tarball_name
-            tar xf $local_tarball_name -C toolchain
         fi
+        tar xf $local_tarball_name -C toolchain
 
         echo "EXTERNAL_TOOLCHAIN = \"`pwd`/toolchain/`echo $tarball_name|sed -e 's/\(.*\)\.tar..*/\1/g'`\"" >> conf/site.conf
 
