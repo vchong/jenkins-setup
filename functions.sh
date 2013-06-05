@@ -190,8 +190,6 @@ conf_jenkins()
 
         # LP: #1161808
         echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
-
-        sstate_cleanup
     fi
 }
 
@@ -202,15 +200,29 @@ conf_localconf()
     sed -i -e "s/^MACHINE.*//g" conf/local.conf
 }
 
-sstate_cleanup()
+cleanup_soft()
 {
-    # on each Saturday we clean sstate-cache to get rid of old versions
-    if [ 6 -eq `date +%w` ]; then
-        df -h /mnt/ci_build/workspace
+    if [ -n "${WORKBASE}" ]; then
+        echo "soft cleanup at ${WORKBASE}"
+        df -h ${WORKBASE}
         ../openembedded-core/scripts/sstate-cache-management.sh --yes --remove-duplicated \
-            --extra-layer=../meta-linaro/meta-aarch64,../meta-linaro/meta-linaro,../meta-linaro/meta-linaro-toolchain,../meta-openembedded/meta-oe,../meta-openembedded/toolchain-layer,../meta-openembedded/meta-webserver \
-            --cache-dir=/mnt/ci_build/workspace/sstate-cache
-        df -h /mnt/ci_build/workspace
+                --extra-layer=../meta-linaro/meta-aarch64,../meta-linaro/meta-linaro,../meta-linaro/meta-linaro-toolchain,../meta-openembedded/meta-oe,../meta-openembedded/toolchain-layer,../meta-openembedded/meta-webserver \
+                --cache-dir=${WORKBASE}/sstate-cache
+        df -h ${WORKBASE}
+        ../openembedded-core/scripts/cleanup-workdir
+        df -h ${WORKBASE}
+    fi
+}
+
+cleanup_hard()
+{
+    if [ -n "${WORKBASE}" ]; then
+        echo "hard cleanup at ${WORKBASE}"
+        df -h ${WORKBASE}
+        rm -rf ${WORKBASE}/sstate-cache
+        rm -rf ${WORKBASE}/tmp-eglibc
+        #rm -rf ${WORKBASE}/downloads
+        df -h ${WORKBASE}
     fi
 }
 
