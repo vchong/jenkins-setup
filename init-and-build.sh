@@ -37,9 +37,8 @@ fi
 show_setup
 
 git_clone_update
-# git_freeze
 
-# let's start build
+# set up OE enviroment variables
 . oe-init-build-env ../build
 
 conf_bblayers
