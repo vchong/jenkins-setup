@@ -220,7 +220,6 @@ cleanup_hard()
         echo "hard cleanup at ${WORKBASE}"
         df -h ${WORKBASE}
         rm -rf ${WORKBASE}/sstate-cache
-        rm -rf ${WORKBASE}/tmp-eglibc
         #rm -rf ${WORKBASE}/downloads
         df -h ${WORKBASE}
     fi

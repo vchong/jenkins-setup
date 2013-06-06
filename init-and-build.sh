@@ -32,6 +32,7 @@ shift $(( OPTIND-1 ))
 
 if [ -n "${WORKSPACE}" ]; then
 	jenkins=1
+    WORKBASE=/mnt/ci_build/workspace
 fi
 
 show_setup
@@ -46,6 +47,7 @@ conf_siteconf
 conf_localconf
 conf_toolchain
 conf_jenkins
+cleanup_soft
 
 # workaround for LP: #1183087
 if [ $jenkins ]; then
