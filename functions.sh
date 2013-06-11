@@ -127,6 +127,7 @@ IMAGE_LINGUAS = "en-gb"
 
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
+BINUVERSION      ?= "2.23.2"
 
 # some options needed for HipHopVM
 PREFERRED_PROVIDER_libevent = "libevent-fb"
