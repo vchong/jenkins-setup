@@ -49,12 +49,4 @@ conf_toolchain
 conf_jenkins
 cleanup_soft
 
-# workaround for LP: #1183087
-if [ $jenkins ]; then
-	if [ "`echo "$@" | grep lamp`" ];then
-		bitbake -ccleansstate libunwind
-		bitbake gcc
-	fi
-fi
-
 bitbake $@
