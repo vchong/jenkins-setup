@@ -3,7 +3,7 @@
 # set some defaults
 release=13.04
 arch=armv8
-gcc=4.7
+gcc=4.8
 external_url=
 jenkins=
 
