@@ -143,6 +143,9 @@ if [[ -d ../poky ]]; then
 # ipk a debian style embedded package manager.
 PACKAGE_CLASSES = "package_ipk"
 
+# Need this for the netperf package.
+LICENSE_FLAGS_WHITELIST = "non-commercial"
+
 EOF
 fi
 
