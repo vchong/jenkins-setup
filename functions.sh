@@ -84,8 +84,13 @@ BBLAYERS += '`realpath $PWD/../meta-linaro/meta-aarch64`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
 BBLAYERS += '`realpath $PWD/../meta-java`'
-BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'
 EOF
+if [[ -d ../poky ]]; then
+    echo "BBLAYERS += '`realpath $PWD/../poky/meta`'">>conf/bblayers.conf
+    echo "BBLAYERS += '`realpath $PWD/../poky/meta-yocto`'">>conf/bblayers.conf
+else
+    echo "BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'">>conf/bblayers.conf
+fi
 
 }
 
@@ -131,6 +136,16 @@ PREFERRED_VERSION_icedtea7-native = "2.1.3"
 SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
 INHERIT += "own-mirrors"
 EOF
+
+if [[ -d ../poky ]]; then
+    cat >> conf/site.conf <<EOF
+
+# ipk a debian style embedded package manager.
+PACKAGE_CLASSES = "package_ipk"
+
+EOF
+fi
+
 
 # enable a distro feature that is compatible with the minimal goal we have
 echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC} ${DISTRO_FEATURES_INITMAN}"' >>conf/site.conf
