@@ -1,5 +1,6 @@
 #!/bin/bash
 
+unset sync
 
 show_setup()
 {
@@ -22,43 +23,29 @@ git_pull()
 
 git_clone_update()
 {
-# clone/update repositories
+    mkdir -p $branch
+    cd $branch
+    repo_cmd=$(which repo) ||
+        { echo "Failed to find repo" &&
+        curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo;
+        chmod a+x ~/bin/repo;
+        repo_cmd=~/bin/repo; }
 
-if [ ! -d meta-linaro/meta-linaro/conf ]; then
-    # old checkout of meta-linaro
-    if [ -d meta-linaro/conf ]; then
-        git_pull meta-linaro
+    if [[ -d .repo ]]; then
+        echo "rebase"
+        for project in $(cat .repo/project.list); do
+            if [[ ! -d $project ]]; then
+                sync=1
+            fi
+        done
+        if [[ $sync = 1 ]]; then
+            $repo_cmd sync
+        fi
+       $repo_cmd rebase
     else
-        git clone git://git.linaro.org/openembedded/meta-linaro.git
+        $repo_cmd init -u $repository -b $branch
+        $repo_cmd sync
     fi
-else
-    git_pull meta-linaro
-fi
-if [ ! -d meta-openembedded/meta-oe ]; then
-    git clone git://git.openembedded.org/meta-openembedded
-else
-    git_pull meta-openembedded
-fi
-if [ ! -d openembedded-core/meta ]; then
-    git clone git://git.openembedded.org/openembedded-core
-else
-    git_pull openembedded-core
-fi
-
-# add meta-java for Andy Johnson
-if [ ! -d meta-java/conf ]; then
-    git clone git://github.com/woglinde/meta-java.git
-else
-    git_pull meta-java
-fi
-
-cd openembedded-core/
-
-if [ ! -d bitbake/conf ]; then
-    git clone git://git.openembedded.org/bitbake
-else
-    git_pull bitbake
-fi
 
 }
 
@@ -236,6 +223,7 @@ This script initialize and run OpenEmbedded builds with Linaro settings.
 OPTIONS:
    -h      Show this message
    -a      Target architecture (armv7a or armv8)
+   -b      manifest branch
    -g      GCC version (4.7 or 4.8)
    -u      External Linaro toolchain URL
 EOF

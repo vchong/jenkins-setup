@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # provide manifest for images
-cd build/tmp-eglibc/deploy/images/
+branch=${1:-master}
+cd $branch/build/tmp-eglibc/deploy/images/
 for img in *.tar.gz
 do
 	if ! [ -h $img ] ; then

@@ -6,10 +6,12 @@ arch=armv8
 gcc=4.8
 external_url=
 jenkins=
+branch=master
+repository=${repository:-git://git.linaro.org/openembedded/manifest.git}
 
 source functions.sh
 
-while getopts “ha:g:u:” OPTION
+while getopts “ha:b:g:u:” OPTION
 do
 	case $OPTION in
 		h)
@@ -18,6 +20,9 @@ do
 			;;
 		a)
 			arch=$OPTARG
+			;;
+		b)
+			branch=$OPTARG
 			;;
 		g)
 			gcc=$OPTARG
@@ -39,6 +44,11 @@ show_setup
 
 git_clone_update
 
+if [[ -d openembedded-core ]]; then
+    cd openembedded-core
+else
+    cd poky
+fi
 # set up OE enviroment variables
 . oe-init-build-env ../build
 
