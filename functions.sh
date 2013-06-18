@@ -27,9 +27,10 @@ git_clone_update()
     cd $branch
     repo_cmd=$(which repo) ||
         { echo "Failed to find repo" &&
-        curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > ~/bin/repo;
-        chmod a+x ~/bin/repo;
-        repo_cmd=~/bin/repo; }
+        mkdir $HOME/bin;
+        curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > $HOME/bin/repo;
+        chmod a+x $HOME/bin/repo;
+        repo_cmd=$HOME/bin/repo; }
 
     if [[ -d .repo ]]; then
         echo "rebase"
