@@ -27,8 +27,8 @@ git_clone_update()
     cd $branch
     repo_cmd=$(which repo) ||
         { echo "Failed to find repo" &&
-        mkdir $HOME/bin;
-        curl https://dl-ssl.google.com/dl/googlesource/git-repo/repo > $HOME/bin/repo;
+        mkdir -p $HOME/bin;
+        curl -s https://dl-ssl.google.com/dl/googlesource/git-repo/repo > $HOME/bin/repo;
         chmod a+x $HOME/bin/repo;
         repo_cmd=$HOME/bin/repo; }
 
@@ -44,7 +44,7 @@ git_clone_update()
         fi
        $repo_cmd rebase
     else
-        $repo_cmd init -u $repository -b $branch
+        $repo_cmd init -q -u $repository -b $branch
         $repo_cmd sync
     fi
 
