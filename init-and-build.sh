@@ -9,7 +9,7 @@ jenkins=
 branch=master
 repository=${repository:-git://git.linaro.org/openembedded/manifest.git}
 
-source functions.sh
+source $(dirname $0)/functions.sh
 
 while getopts “ha:b:g:u:” OPTION
 do
