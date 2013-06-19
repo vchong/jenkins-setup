@@ -39,8 +39,8 @@ git_clone_update()
         fi
        $repo_cmd rebase
     else
-        $repo_cmd init -q -u $repository -b $branch
-        $repo_cmd sync
+        $repo_cmd init --quiet -u $manifest_repository -b $manifest_branch -m default.xml --repo-url=git://android.git.linaro.org/tools/repo
+        time $repo_cmd sync --quiet -j3
     fi
 }
 

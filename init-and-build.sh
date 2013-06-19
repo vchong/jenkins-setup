@@ -6,8 +6,8 @@ arch=armv8
 gcc=4.8
 external_url=
 jenkins=
-branch=master
-repository=${repository:-git://git.linaro.org/openembedded/manifest.git}
+manifest_branch=${manifest_branch:-master}
+manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/manifest.git}
 
 source $(dirname $0)/functions.sh
 
@@ -22,7 +22,7 @@ do
 			arch=$OPTARG
 			;;
 		b)
-			branch=$OPTARG
+			manifest_branch=$OPTARG
 			;;
 		g)
 			gcc=$OPTARG
