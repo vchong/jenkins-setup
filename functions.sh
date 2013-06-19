@@ -23,8 +23,6 @@ git_pull()
 
 git_clone_update()
 {
-    repo_cmd=$(which repo)
-
     if [[ -d .repo ]]; then
         echo "rebase"
         for project in $(cat .repo/project.list); do
@@ -33,12 +31,12 @@ git_clone_update()
             fi
         done
         if [[ $sync = 1 ]]; then
-            $repo_cmd sync
+            repo sync
         fi
-       $repo_cmd rebase
+       repo rebase
     else
-        $repo_cmd init --quiet -u $manifest_repository -b $manifest_branch -m default.xml --repo-url=git://android.git.linaro.org/tools/repo
-        time $repo_cmd sync --quiet -j3
+        repo init --quiet -u $manifest_repository -b $manifest_branch -m default.xml --repo-url=git://android.git.linaro.org/tools/repo
+        time repo sync --quiet -j3
     fi
 }
 
