@@ -23,8 +23,6 @@ git_pull()
 
 git_clone_update()
 {
-    mkdir -p $manifest_branch
-    cd $manifest_branch
     repo_cmd=$(which repo)
 
     if [[ -d .repo ]]; then
