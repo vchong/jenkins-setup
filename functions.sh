@@ -21,13 +21,15 @@ git_pull()
     popd >/dev/null
 }
 
+
+
 git_clone_update()
 {
     mkdir -p $branch
     cd $branch
     repo_cmd=$(which repo) ||
         { echo "Failed to find repo" &&
-        mkdir -p $HOME/bin;
+        test -d $HOME/bin || mkdir -p $HOME/bin;
         curl -s https://dl-ssl.google.com/dl/googlesource/git-repo/repo > $HOME/bin/repo;
         chmod a+x $HOME/bin/repo;
         repo_cmd=$HOME/bin/repo; }
