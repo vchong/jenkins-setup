@@ -21,18 +21,11 @@ git_pull()
     popd >/dev/null
 }
 
-
-
 git_clone_update()
 {
     mkdir -p $branch
     cd $branch
-    repo_cmd=$(which repo) ||
-        { echo "Failed to find repo" &&
-        test -d $HOME/bin || mkdir -p $HOME/bin;
-        curl -s https://dl-ssl.google.com/dl/googlesource/git-repo/repo > $HOME/bin/repo;
-        chmod a+x $HOME/bin/repo;
-        repo_cmd=$HOME/bin/repo; }
+    repo_cmd=$(which repo)
 
     if [[ -d .repo ]]; then
         echo "rebase"
@@ -49,7 +42,6 @@ git_clone_update()
         $repo_cmd init -q -u $repository -b $branch
         $repo_cmd sync
     fi
-
 }
 
 git_freeze()
