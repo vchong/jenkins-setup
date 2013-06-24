@@ -42,22 +42,22 @@ git_clone_update()
 
 git_freeze()
 {
-# 13.06 release freeze
+# 13.03 release freeze
 
 pushd meta-linaro
-git checkout c383e63617469dce76411249dba384aad21a3d9c
+git checkout 9ba698baa24d78b9400292c7738ad34edaf63e05
 popd
 
 pushd meta-openembedded
-git checkout f7278f7900b98497bb900b004d727efba06773c1
+git checkout 6cbd81ed18465affba841311ec1cdf3eb6800dba
 popd
 
 pushd openembedded-core
-git checkout 4e6de6d5f0454024eec2ec775a938c5dab70610c
+git checkout d9130e5113c8f93f327fbe19dbfe39036c1c3995
 popd
 
 pushd openembedded-core/bitbake
-git checkout 3d8044bc79c482c5ea008ddf12a8128dcd1527ee
+git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
 popd
 
 }
