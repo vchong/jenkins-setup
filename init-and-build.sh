@@ -1,11 +1,10 @@
 #!/bin/bash
 
 # set some defaults
-release=13.04
+release=13.06
 arch=armv8
 gcc=4.8
 external_url=
-jenkins=
 manifest_branch=${manifest_branch:-master}
 manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/manifest.git}
 
@@ -36,7 +35,6 @@ done
 shift $(( OPTIND-1 ))
 
 if [ -n "${WORKSPACE}" ]; then
-	jenkins=1
     WORKBASE=/mnt/ci_build/workspace
 fi
 

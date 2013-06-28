@@ -42,7 +42,7 @@ git_clone_update()
 
 git_freeze()
 {
-# 13.03 release freeze
+# release freeze
 
 pushd meta-linaro
 git checkout 9ba698baa24d78b9400292c7738ad34edaf63e05
@@ -59,7 +59,6 @@ popd
 pushd openembedded-core/bitbake
 git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
 popd
-
 }
 
 conf_bblayers()
@@ -82,7 +81,6 @@ if [[ -d ../poky ]]; then
 else
     echo "BBLAYERS += '`realpath $PWD/../openembedded-core/meta`'">>conf/bblayers.conf
 fi
-
 }
 
 conf_siteconf()
@@ -140,7 +138,6 @@ LICENSE_FLAGS_WHITELIST = "non-commercial"
 EOF
 fi
 
-
 # enable a distro feature that is compatible with the minimal goal we have
 echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf ${DISTRO_FEATURES_LIBC} ${DISTRO_FEATURES_INITMAN}"' >>conf/site.conf
 }
@@ -152,8 +149,8 @@ conf_toolchain()
         tarball_name=`echo $external_url | cut -d "/" -f 8`
         mkdir -p toolchain
 
-        if [ $jenkins ]; then
-            local_tarball_name=/mnt/ci_build/workspace/downloads/$tarball_name
+        if [ -n "${WORKSPACE}" ]; then
+            local_tarball_name=${WORKBASE}/downloads/$tarball_name
         else
             local_tarball_name=toolchain/$tarball_name
         fi
