@@ -156,7 +156,7 @@ conf_toolchain()
         fi
 
         if [ ! -e $local_tarball_name ];then
-            wget -c $external_url -O $local_tarball_name
+            wget -cq $external_url -O $local_tarball_name
         fi
         tar xf $local_tarball_name -C toolchain
 
