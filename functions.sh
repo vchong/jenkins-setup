@@ -16,7 +16,16 @@ show_setup()
 
 git_clone_update()
 {
-    if [[ -d .repo ]]; then
+
+   if [ -n "${WORKSPACE}" ]; then
+        if [ ! -d .repo ]; then
+            echo "jenkins repo init"
+            repo init  -u $manifest_repository -b $manifest_branch -m default.xml --repo-url=git://android.git.linaro.org/tools/repo
+        fi
+        echo "jenkins repo sync"
+        repo sync -j4
+    # FIXME: check if the following code is really needed
+    elif [[ -d .repo ]]; then
         echo "rebase"
         for project in $(cat .repo/project.list); do
             if [[ ! -d $project ]]; then
