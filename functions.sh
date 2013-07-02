@@ -14,13 +14,6 @@ show_setup()
     echo ""
 }
 
-git_pull()
-{
-    pushd $1 >/dev/null
-    git pull
-    popd >/dev/null
-}
-
 git_clone_update()
 {
     if [[ -d .repo ]]; then
