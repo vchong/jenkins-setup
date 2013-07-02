@@ -8,6 +8,8 @@ external_url=
 manifest_branch=${manifest_branch:-master}
 manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/manifest.git}
 
+export PATH=$PATH:$HOME/bin
+
 source $(dirname $0)/functions.sh
 
 while getopts “ha:b:g:u:” OPTION
