@@ -159,7 +159,7 @@ conf_toolchain()
         fi
 
         if [ ! -e $local_tarball_name ];then
-            wget -cq $external_url -O $local_tarball_name
+            wget -cnv $external_url -O $local_tarball_name
         fi
         md5sum $local_tarball_name
         tar xf $local_tarball_name -C toolchain
