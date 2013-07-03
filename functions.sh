@@ -147,6 +147,7 @@ echo 'DISTRO_FEATURES = "x11 alsa argp ext2 largefile usbgadget usbhost xattr nf
 conf_toolchain()
 {
     if [ $external_url ];then
+        set -e
         echo 'TCMODE = "external-linaro"' >>conf/site.conf
         tarball_name=`echo $external_url | cut -d "/" -f 8`
         mkdir -p toolchain
@@ -160,6 +161,7 @@ conf_toolchain()
         if [ ! -e $local_tarball_name ];then
             wget -cq $external_url -O $local_tarball_name
         fi
+        md5sum $local_tarball_name
         tar xf $local_tarball_name -C toolchain
 
         echo "EXTERNAL_TOOLCHAIN = \"`pwd`/toolchain/`echo $tarball_name|sed -e 's/\(.*\)\.tar..*/\1/g'`\"" >> conf/site.conf
@@ -172,6 +174,7 @@ conf_toolchain()
                 echo 'ELT_TARGET_SYS = "aarch64-linux-gnu"' >>conf/site.conf
                 ;;
         esac
+        set +e
 
     fi
 }
