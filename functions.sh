@@ -153,8 +153,10 @@ conf_toolchain()
         mkdir -p toolchain
 
         if [ -n "${WORKSPACE}" ]; then
+            mkdir -p ${WORKBASE}/downloads/
             local_tarball_name=${WORKBASE}/downloads/$tarball_name
         else
+            mkdir toolchain/
             local_tarball_name=toolchain/$tarball_name
         fi
 
