@@ -204,7 +204,7 @@ conf_localconf()
 
 cleanup_soft()
 {
-    if [ -n "${WORKBASE}" ]; then
+    if [ -e "${WORKBASE}/sstate-cache" ]; then
         echo "soft cleanup at ${WORKBASE}"
         df -h ${WORKBASE}
         ../openembedded-core/scripts/sstate-cache-management.sh --yes --remove-duplicated \
@@ -213,6 +213,8 @@ cleanup_soft()
         df -h ${WORKBASE}
         ../openembedded-core/scripts/cleanup-workdir
         df -h ${WORKBASE}
+    else
+        echo "no sstate-cache to clean up"
     fi
 }
 
