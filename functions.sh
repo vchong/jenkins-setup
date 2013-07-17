@@ -111,6 +111,7 @@ IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 BINUVERSION      ?= "2.23.2"
+EGLIBCVERSION    ?= "2.17"
 
 # some options needed for Linaro images
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
