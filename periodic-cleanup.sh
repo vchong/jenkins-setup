@@ -25,15 +25,10 @@ shift $(( OPTIND-1 ))
 cd openembedded-core
 . oe-init-build-env ../build
 
-diskspace=`df -h $WORKBASE|tail -n1`
-used=`echo $diskspace | awk '{ print $5}' | cut -d'%' -f1  `
-if [ $used -ge 80 ]; then
-    echo "more then 80% of disk used, hard cleanup"
-    echo $diskspace
-    job=hard
-fi
-
 case $job in
+    auto)
+        cleanup_auto
+        ;;
     soft)
         cleanup_soft
         ;;

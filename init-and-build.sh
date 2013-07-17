@@ -57,6 +57,6 @@ conf_siteconf
 conf_localconf
 conf_toolchain
 conf_jenkins
-cleanup_soft
+cleanup_auto
 
 bitbake $@

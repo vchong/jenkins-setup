@@ -230,6 +230,22 @@ cleanup_hard()
     fi
 }
 
+cleanup_auto()
+{
+    diskspace=`df -h ${WORKBASE}|tail -n1`
+    echo $diskpace
+    used=`echo $diskspace | awk '{ print $5}' | cut -d'%' -f1  `
+    if [ $used -ge 90 ]; then
+        echo "more then 90% of disk used, hard cleanup"
+        cleanup_hard
+    elif [ $used -ge 50 ]; then
+        echo "more then 50% of disk used, soft cleanup"
+        cleanup_soft
+    else
+        echo "plenty of space, no cleanup"
+    fi
+}
+
 usage()
 {
     cat << EOF
