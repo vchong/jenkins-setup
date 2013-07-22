@@ -47,19 +47,19 @@ git_freeze()
 # release freeze
 
 pushd meta-linaro
-git checkout 9ba698baa24d78b9400292c7738ad34edaf63e05
+git checkout 957092ab3c95f81f05e8f86fbf2dbf1bc2eb6e44
 popd
 
 pushd meta-openembedded
-git checkout 6cbd81ed18465affba841311ec1cdf3eb6800dba
+git checkout 41748a4afc494b714315ba529f138214f80d41b9
 popd
 
 pushd openembedded-core
-git checkout d9130e5113c8f93f327fbe19dbfe39036c1c3995
+git checkout 8fc6904fe97438478119db6cd23b7b4eb33b50aa
 popd
 
 pushd openembedded-core/bitbake
-git checkout 2ecb102968cdbbdbbfa91e1dcccf45bcd0b59a89
+git checkout 6eee0cc37438cc3f91531b7df524330fba27161b
 popd
 }
 
