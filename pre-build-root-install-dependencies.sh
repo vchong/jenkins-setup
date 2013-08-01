@@ -29,7 +29,7 @@ elif [ "$DISTRIBUTION" = "fedora" ]; then
   #  docbook-dtds docbook-utils fop libxslt
   # ADT Installer Extras
   #yum install autoconf automake libtool glib2-devel
-done
+fi
 
 # Get latest repo script and install it in PATH (use our mirror of repo)
 test -d $HOME/bin || mkdir -p $HOME/bin
