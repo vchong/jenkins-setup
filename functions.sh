@@ -259,5 +259,6 @@ OPTIONS:
    -b      manifest branch
    -g      GCC version (4.7 or 4.8)
    -u      External Linaro toolchain URL
+   -v      Add -v[erbose] to bitbake invocation
 EOF
 }
