@@ -129,17 +129,16 @@ PREFERRED_VERSION_icedtea7-native = "2.1.3"
 # enable source mirror
 SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
 INHERIT += "own-mirrors"
-EOF
-
-if [[ -d ../poky ]]; then
-    cat >> conf/site.conf <<EOF
-
-# ipk a debian style embedded package manager.
-PACKAGE_CLASSES = "package_ipk"
 
 # Need this for the netperf package.
 LICENSE_FLAGS_WHITELIST = "non-commercial"
 
+EOF
+
+if [[ -d ../poky ]]; then
+    cat >> conf/site.conf <<EOF
+# ipk a debian style embedded package manager.
+PACKAGE_CLASSES = "package_ipk"
 EOF
 fi
 
