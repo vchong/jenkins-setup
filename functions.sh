@@ -171,6 +171,11 @@ conf_jenkins()
 
         # LP: #1161808
         echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
+
+        # As noted during jdk8 integration, toolchain has stubble ties to the build location. Thus in
+        # jenkins use same tmpdir for all builds. 
+        # XXX: make this tmpfs, 10G of ram should be enough
+        echo 'TMPDIR = "/mnt/ci_build/workspace/tmp"' >>conf/site.conf
     fi
 }
 
