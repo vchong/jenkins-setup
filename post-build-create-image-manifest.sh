@@ -1,10 +1,10 @@
-#!/bin/bash -x
+#!/bin/bash
 
 if [ -n "${WORKSPACE}" ]; then
 	test -d ${WORKSPACE}/out || mkdir -p ${WORKSPACE}/out
 	rm -rf ${WORKSPACE}/out/*
 	deploy_dir=`find build -type d -name deploy`
-	if [ ! -d $deploy_dir ]; then
+	if [ ! -d $deploy_dir/images ]; then
 		deploy_dir=`find /mnt/ci_build/workspace/tmp-eglibc/ -type d -name deploy`
 	fi
 	cd ${deploy_dir}/images
