@@ -63,5 +63,4 @@ conf_toolchain
 conf_jenkins
 cleanup_auto
 
-bitbake -c cleansstate gcc
 bitbake $bitbake_verbose $@
