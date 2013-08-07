@@ -5,7 +5,7 @@ if [ -n "${WORKSPACE}" ]; then
 	rm -rf ${WORKSPACE}/out/*
 	deploy_dir=`find build -type d -name deploy`
 	if [ ! -d $deploy_dir/images ]; then
-		deploy_dir=`find /mnt/ci_build/workspace/tmp-eglibc/ -type d -name deploy`
+		deploy_dir=`find /mnt/ci_build/workspace/tmp -type d -name deploy`
 	fi
 	cd ${deploy_dir}/images
 	for img in *.rootfs.tar.gz

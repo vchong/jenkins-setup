@@ -176,6 +176,7 @@ conf_jenkins()
         # jenkins use same tmpdir for all builds. 
         # XXX: make this tmpfs, 10G of ram should be enough
         echo 'TMPDIR = "/mnt/ci_build/workspace/tmp"' >>conf/site.conf
+        echo 'TCLIBCAPPEND = ""' >>conf/site.conf
     fi
 }
 

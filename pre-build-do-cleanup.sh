@@ -5,7 +5,7 @@ if [ -n "${WORKSPACE}" ]; then
     find ${WORKSPACE} -type d -name build | xargs rm -rf
 
     # clean shared tmpdir
-    rm -rf /mnt/ci_build/workspace/tmp-eglibc || true
+    rm -rf /mnt/ci_build/workspace/tmp || true
 
     # those should not exist but they may
     find ${WORKSPACE} -type d -name downloads | xargs rm -rf
