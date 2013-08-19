@@ -48,6 +48,7 @@ conf_bblayers()
 
 cat >> conf/bblayers.conf <<EOF
 BBLAYERS  = '`realpath $PWD/../meta-openembedded/meta-oe`'
+BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-filesystems`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-networking`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/toolchain-layer`'
