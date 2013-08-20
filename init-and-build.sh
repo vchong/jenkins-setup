@@ -55,20 +55,7 @@ show_setup
 
 git_clone_update
 
-if [[ -d openembedded-core ]]; then
-    cd openembedded-core
-else
-    cd poky
-fi
-# set up OE enviroment variables
-. ./oe-init-build-env ../build
-
-conf_bblayers
-conf_siteconf
-conf_localconf
-conf_toolchain
-conf_jenkins
-cleanup_auto
+init_env
 
 bitbake gcc-cross||true
 bitbake $bitbake_verbose $@

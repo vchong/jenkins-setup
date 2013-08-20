@@ -232,6 +232,24 @@ cleanup_auto()
     fi
 }
 
+init_env()
+{
+    if [[ -d openembedded-core ]]; then
+        cd openembedded-core
+    else
+        cd poky
+    fi
+    # set up OE enviroment variables
+    . ./oe-init-build-env ../build
+
+    conf_bblayers
+    conf_siteconf
+    conf_localconf
+    conf_toolchain
+    conf_jenkins
+    cleanup_auto
+}
+
 usage()
 {
     cat << EOF
