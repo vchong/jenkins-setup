@@ -7,6 +7,9 @@ show_setup()
     echo ""
     echo "GCC version: $gcc"
     echo "Target architecture: $arch"
+    echo "Manifest branch: $manifest_branch"
+    echo "Manifest URL: $manifest_repository"
+    echo "Verbose: $bitbake_verbose"
 
     if [ $external_url ]; then
         echo "External toolchain URL: $external_url"
