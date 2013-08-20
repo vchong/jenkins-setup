@@ -7,13 +7,14 @@ gcc=4.8
 external_url=
 manifest_branch=${manifest_branch:-master}
 manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/manifest.git}
+manifest_groups=
 bitbake_verbose=
 
 export PATH=$PATH:$HOME/bin
 
 source $(dirname $0)/functions.sh
 
-while getopts “ha:b:g:u:v” OPTION
+while getopts “ha:b:m:g:u:v” OPTION
 do
 	case $OPTION in
 		h)
@@ -25,6 +26,9 @@ do
 			;;
 		b)
 			manifest_branch=$OPTARG
+			;;
+		m)
+			manifest_groups="-g $OPTARG"
 			;;
 		g)
 			gcc=$OPTARG

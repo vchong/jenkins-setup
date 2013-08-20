@@ -23,7 +23,7 @@ git_clone_update()
    if [ -n "${WORKSPACE}" ]; then
         if [ ! -d .repo ]; then
             echo "jenkins repo init"
-            repo init  -u $manifest_repository -b $manifest_branch -m default.xml --repo-url=git://android.git.linaro.org/tools/repo
+            repo init  -u $manifest_repository -b $manifest_branch -m default.xml $manifest_groups --repo-url=git://android.git.linaro.org/tools/repo
         fi
         echo "jenkins repo sync"
         repo sync -j4
@@ -40,7 +40,7 @@ git_clone_update()
         fi
        repo rebase
     else
-        repo init --quiet -u $manifest_repository -b $manifest_branch -m default.xml --repo-url=git://android.git.linaro.org/tools/repo
+        repo init --quiet -u $manifest_repository -b $manifest_branch -m default.xml  $manifest_groups --repo-url=git://android.git.linaro.org/tools/repo
         time repo sync --quiet -j3
     fi
 }
