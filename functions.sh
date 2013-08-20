@@ -9,6 +9,7 @@ show_setup()
     echo "Target architecture: $arch"
     echo "Manifest branch: $manifest_branch"
     echo "Manifest URL: $manifest_repository"
+    echo "Manifest groups: $manifest_groups"
     echo "Verbose: $bitbake_verbose"
 
     if [ $external_url ]; then
