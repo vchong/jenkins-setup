@@ -10,6 +10,7 @@ show_setup()
     echo "Manifest branch: $manifest_branch"
     echo "Manifest URL: $manifest_repository"
     echo "Manifest groups: $manifest_groups"
+    echo "Init env: $init_env"
     echo "Verbose: $bitbake_verbose"
 
     if [ $external_url ]; then

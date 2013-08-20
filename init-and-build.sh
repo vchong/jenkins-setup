@@ -14,7 +14,7 @@ export PATH=$PATH:$HOME/bin
 
 source $(dirname $0)/functions.sh
 
-while getopts “ha:b:m:r:g:u:v” OPTION
+while getopts “ha:b:m:r:g:u:i:v” OPTION
 do
 	case $OPTION in
 		h)
@@ -39,6 +39,9 @@ do
 		u)
 			external_url=$OPTARG
 			;;
+		i)
+			init_env="$OPTARG"
+			;;
 		v)
 			bitbake_verbose="-v"
 			;;
@@ -55,7 +58,11 @@ show_setup
 
 git_clone_update
 
-init_env
+if [ -z "$init_env" ]; then
+    init_env
+else
+    eval $init_env
+fi
 
 bitbake gcc-cross||true
 bitbake $bitbake_verbose $@
