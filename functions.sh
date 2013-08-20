@@ -46,7 +46,7 @@ conf_bblayers()
 {
 # add required layers
 
-cat >> conf/bblayers.conf <<EOF
+cat > conf/bblayers.conf <<EOF
 BBLAYERS  = '`realpath $PWD/../meta-openembedded/meta-oe`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-filesystems`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'
