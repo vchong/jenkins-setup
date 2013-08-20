@@ -22,10 +22,11 @@ git_clone_update()
 {
 
    if [ -n "${WORKSPACE}" ]; then
-        if [ ! -d .repo ]; then
-            echo "jenkins repo init"
-            repo init  -u $manifest_repository -b $manifest_branch -m default.xml $manifest_groups --repo-url=git://android.git.linaro.org/tools/repo
-        fi
+        # always run repo init again, even if the workspace already exists, in
+        # case a parameter has changed
+        echo "jenkins repo init"
+        repo init  -u $manifest_repository -b $manifest_branch -m default.xml $manifest_groups --repo-url=git://android.git.linaro.org/tools/repo
+
         echo "jenkins repo sync"
         repo sync -j4
     # FIXME: check if the following code is really needed
