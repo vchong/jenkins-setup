@@ -75,5 +75,11 @@ else
     eval $init_env
 fi
 
+# when running on Linaro CI, only.
+if [ -n "${WORKSPACE}" ]; then
+    init_env_linaro_ci
+    cleanup_auto
+fi
+
 bitbake gcc-cross || true
 bitbake $bitbake_verbose $@

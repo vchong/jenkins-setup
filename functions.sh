@@ -139,10 +139,6 @@ PREFERRED_PROVIDER_virtual/kernel_qemux86 = "linux-yocto"
 PREFERRED_PROVIDER_libevent = "libevent-fb"
 PREFERRED_VERSION_libmemcached = "1.0.7"
 
-# enable source mirror
-SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
-INHERIT += "own-mirrors"
-
 # Need this for the netperf package.
 LICENSE_FLAGS_WHITELIST = "non-commercial"
 
@@ -198,14 +194,6 @@ conf_toolchain()
 conf_jenkins()
 {
     if [ -n "${WORKSPACE}" ]; then
-        # share downloads and sstate-cache between all builds
-        echo 'DL_DIR = "/mnt/ci_build/workspace/downloads"' >>conf/site.conf
-        echo 'SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"' >>conf/site.conf
-        echo 'BB_GENERATE_MIRROR_TARBALLS = "True"' >>conf/site.conf
-
-        # LP: #1161808
-        echo "IMAGE_NAME = \"\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}\"" >>conf/site.conf
-
         # As noted during jdk8 integration, toolchain has stubble ties to the build location. Thus in
         # jenkins use same tmpdir for all builds. 
         # XXX: make this tmpfs, 10G of ram should be enough
@@ -287,7 +275,26 @@ init_env()
     conf_localconf
     conf_toolchain
     conf_jenkins
-    cleanup_auto
+}
+
+# Enable some Linaro CI site specific options 
+init_env_linaro_ci()
+{
+    cat >> conf/site.conf <<EOF
+SCONF_VERSION = "1"
+
+# share downloads and sstate-cache between all builds
+DL_DIR = "/mnt/ci_build/workspace/downloads"
+SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"
+BB_GENERATE_MIRROR_TARBALLS = "True"
+
+IMAGE_NAME = "\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}"
+
+# enable source mirror
+SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"
+INHERIT += "own-mirrors"
+
+EOF
 }
 
 usage()
