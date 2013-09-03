@@ -56,6 +56,7 @@ BBLAYERS += '`realpath $PWD/../meta-linaro/meta-bigendian`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
 BBLAYERS += '`realpath $PWD/../meta-java`'
+BBLAYERS += '`realpath $PWD/../meta-virtualization`'
 EOF
 if [[ -d ../poky ]]; then
     echo "BBLAYERS += '`realpath $PWD/../poky/meta`'">>conf/bblayers.conf
