@@ -75,7 +75,7 @@ if [ ! -z "$buildhistory_dir" ] && [ -d $buildhistory_dir ]; then
 
     cd _buildhistory
     git add -A
-    git commit --allow-empty -m "${DATE}-${BUILD_NUMBER}"
+    git commit --allow-empty -m "Build : ${BUILD_NUMBER}"
     git push origin HEAD:$branch
 else
     echo "Build history not found"
