@@ -248,6 +248,7 @@ OPTIONS:
    -h      Show this message
    -a      Target architecture (armv7a or armv8)
    -b      manifest branch
+   -m      manifest groups
    -r      manifest repository
    -g      GCC version (4.7 or 4.8)
    -u      External Linaro toolchain URL
