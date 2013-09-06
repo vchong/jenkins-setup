@@ -14,7 +14,7 @@ export PATH=$PATH:$HOME/bin
 
 source $(dirname $0)/functions.sh
 
-while getopts “ha:b:m:g:u:v” OPTION
+while getopts “ha:b:m:r:g:u:v” OPTION
 do
 	case $OPTION in
 		h)
@@ -29,6 +29,9 @@ do
 			;;
 		m)
 			manifest_groups="-g $OPTARG"
+			;;
+		r)
+			manifest_repository=$OPTARG
 			;;
 		g)
 			gcc=$OPTARG
