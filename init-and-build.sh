@@ -70,4 +70,8 @@ conf_toolchain
 conf_jenkins
 cleanup_auto
 
+# another hack to get builds running again
+bitbake -c cleansstate zlib-native
+bitbake zlib-native
+
 bitbake $bitbake_verbose $@
