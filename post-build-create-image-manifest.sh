@@ -43,4 +43,12 @@ if [ -n "${WORKSPACE}" ]; then
 		cp -a ${manifest} ${WORKSPACE}/out/${image_name}.manifest
 		mv ${deploy_dir_image}/${image_name}.* ${WORKSPACE}/out
 	done
+
+	# export modules archives and kernel image, if any
+	for f in `find . -name modules-\* -o -name uImage-\* -o -name zImage-\*`
+	do
+		if ! [ -h $f ] ; then
+			cp -a $f ${WORKSPACE}/out
+		fi
+	done
 fi
