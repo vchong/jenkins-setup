@@ -8,10 +8,10 @@ if [ -n "${WORKSPACE}" ]; then
 		deploy_dir=`find /mnt/ci_build/workspace/tmp -type d -name deploy`
 	fi
 	cd ${deploy_dir}/images
-	for img in *.rootfs.*.gz
-	do
-		if ! [ -h $img ] ; then
-			img=`echo $img | cut -d'.' -f1`
+	images="$(ls *.rootfs.*.gz)"
+	for img in "$images"; do
+		if ! [ -h "$img" ] ; then
+			img=$(echo "$img" | cut -d'.' -f1)
 			cp -a ../licenses/$img/license.manifest $img.manifest
 			mv $img.* ${WORKSPACE}/out
 		fi
