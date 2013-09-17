@@ -1,5 +1,33 @@
 #!/bin/bash
 
+usage()
+{
+    cat << EOF
+usage: $0 options
+
+This script should be run at the end of a Linaro OpenEmbedded build,
+to prepare the 'output' folder
+
+OPTIONS:
+   -h      Show this message
+   -v      Verbose output
+EOF
+}
+
+
+while getopts “hv” OPTION
+do
+	case $OPTION in
+		h)
+			usage
+			exit
+			;;
+		v)
+			set -x
+			;;
+	esac
+done
+
 if [ -n "${WORKSPACE}" ]; then
 	test -d ${WORKSPACE}/out || mkdir -p ${WORKSPACE}/out
 	rm -rf ${WORKSPACE}/out/*
