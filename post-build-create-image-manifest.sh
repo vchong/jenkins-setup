@@ -3,17 +3,13 @@
 if [ -n "${WORKSPACE}" ]; then
 	test -d ${WORKSPACE}/out || mkdir -p ${WORKSPACE}/out
 	rm -rf ${WORKSPACE}/out/*
-	deploy_dir=`find build -maxdepth 2 -type d -name deploy`
-	if [ ! -d $deploy_dir/images ]; then
-		deploy_dir=`find /mnt/ci_build/workspace/tmp -type d -name deploy`
-	fi
-	cd ${deploy_dir}/images
-	images="$(ls *.rootfs.*.gz)"
-	for img in "$images"; do
-		if ! [ -h "$img" ] ; then
-			img=$(echo "$img" | cut -d'.' -f1)
-			cp -a ../licenses/$img/license.manifest $img.manifest
-			mv $img.* ${WORKSPACE}/out
-		fi
-	done
+	oe_init_build_env=`find . -maxdepth 2 -type f -name oe-init-build-env`
+	source ${oe_init_build_env} build
+	deploy_dir_image=`bitbake -e | grep "^DEPLOY_DIR_IMAGE="| cut -d'=' -f2 | tr -d '"'`
+	license_directory=`bitbake -e | grep "^LICENSE_DIRECTORY="| cut -d'=' -f2 | tr -d '"'`
+	license_manifest=`find ${license_directory} -type f -name 'license.manifest'`
+	image_name=`dirname ${license_manifest}`
+	image_name=`basename ${image_name}`
+	cp -a ${license_manifest} ${WORKSPACE}/out/${image_name}.manifest
+	mv ${deploy_dir_image}/${image_name}.* ${WORKSPACE}/out
 fi
