@@ -31,7 +31,7 @@ elif [ "$DISTRIBUTION" = "fedora" ]; then
   #yum install autoconf automake libtool glib2-devel
 fi
 
-# Get latest repo script and install it in PATH (use our mirror of repo)
+# Get latest repo script and install it in PATH
 test -d $HOME/bin || mkdir -p $HOME/bin
-wget -cq --no-check-certificate "http://android.git.linaro.org/gitweb?p=tools/repo.git;a=blob_plain;f=repo;hb=refs/heads/stable" -O $HOME/bin/repo
+wget -q --no-check-certificate "http://android.git.linaro.org/gitweb?p=tools/repo.git;a=blob_plain;f=repo;hb=refs/heads/stable" -O $HOME/bin/repo
 chmod a+x $HOME/bin/repo
