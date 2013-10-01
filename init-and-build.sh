@@ -70,4 +70,5 @@ conf_toolchain
 conf_jenkins
 cleanup_auto
 
+bitbake gcc-cross||true
 bitbake $bitbake_verbose $@
