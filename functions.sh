@@ -111,7 +111,7 @@ PREFERRED_VERSION_libmemcached = "1.0.7"
 # some options for Aarch64 OpenJDK
 PREFERRED_PROVIDER_virtual/java-native = "jamvm-native"
 PREFERRED_PROVIDER_virtual/javac-native = "ecj-bootstrap-native"
-PREFERRED_VERSION_openjdk-7-jre = "03b21-2.1.8"
+PREFERRED_VERSION_openjdk-7-jre = "25b30-2.3.12"
 PREFERRED_VERSION_icedtea7-native = "2.1.3"
 
 # enable source mirror
