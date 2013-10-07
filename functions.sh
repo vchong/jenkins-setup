@@ -61,7 +61,6 @@ BBLAYERS += '`realpath $PWD/../meta-linaro/meta-aarch64`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-bigendian`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
-BBLAYERS += '`realpath $PWD/../meta-java`'
 BBLAYERS += '`realpath $PWD/../meta-virtualization`'
 BBLAYERS += '`realpath $PWD/../meta-browser`'
 EOF
@@ -107,12 +106,6 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 # some options needed for HipHopVM
 PREFERRED_PROVIDER_libevent = "libevent-fb"
 PREFERRED_VERSION_libmemcached = "1.0.7"
-
-# some options for Aarch64 OpenJDK
-PREFERRED_PROVIDER_virtual/java-native = "jamvm-native"
-PREFERRED_PROVIDER_virtual/javac-native = "ecj-bootstrap-native"
-PREFERRED_VERSION_openjdk-7-jre = "25b30-2.3.12"
-PREFERRED_VERSION_icedtea7-native = "2.1.3"
 
 # enable source mirror
 SOURCE_MIRROR_URL = "http://snapshots.linaro.org/openembedded/sources/"

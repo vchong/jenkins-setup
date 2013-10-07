@@ -16,12 +16,12 @@ if [ "$DISTRIBUTION" = "ubuntu" ]; then
   #apt-get install -y --force-yes autoconf automake libtool libglib2.0-dev
   # Linaro Extras
   apt-get install -y --force-yes automake bzip2 bzr cvs desktop-file-utils \
-    libtool patch python realpath subversion texi2html
+    libtool patch python realpath subversion texi2html openjdk-7-jdk
 elif [ "$DISTRIBUTION" = "fedora" ]; then
   # Essentials
   yum install gawk make wget tar bzip2 gzip python unzip perl patch \
     diffutils diffstat git cpp gcc gcc-c++ eglibc-devel texinfo chrpath \
-    ccache
+    ccache java-1.7.0-openjdk
   # Graphical Extras
   #yum install SDL-devel xterm
   # Documentation
