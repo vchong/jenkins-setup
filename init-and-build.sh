@@ -61,7 +61,7 @@ else
     cd poky
 fi
 # set up OE enviroment variables
-. oe-init-build-env ../build
+. ./oe-init-build-env ../build
 
 conf_bblayers
 conf_siteconf
