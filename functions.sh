@@ -85,7 +85,7 @@ IMAGE_ROOTFS_ALIGNMENT = "2048"
 # to save space we remove source after build
 INHERIT += "rm_work"
 
-MACHINE = "generic${arch}"
+MACHINE ?= "generic${arch}"
 
 # those numbers can be tweaked if build takes too much power
 BB_NUMBER_THREADS = "8"
