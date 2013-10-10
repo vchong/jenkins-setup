@@ -45,7 +45,7 @@ if [ -n "${WORKSPACE}" ]; then
 	done
 
 	# export modules archives and kernel image, if any
-	for f in `find . -name modules-\* -o -name uImage-\* -o -name zImage-\*`
+	for f in `find ${deploy_dir_image} -name modules-\* -o -name uImage-\* -o -name zImage-\*`
 	do
 		if ! [ -h $f ] ; then
 			cp -a $f ${WORKSPACE}/out
