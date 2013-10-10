@@ -64,5 +64,4 @@ else
     eval $init_env
 fi
 
-bitbake gcc-cross||true
 bitbake $bitbake_verbose $@
