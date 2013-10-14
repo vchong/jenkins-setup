@@ -104,6 +104,10 @@ EGLIBCVERSION    ?= "2.18"
 # some options needed for Linaro images
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
+# Don't build kernels on the CI
+# NOTE: this breaks recipes that build external kernel modules
+PREFERRED_PROVIDER_virtual/kernel = "linux-dummy"
+
 # some options needed for HipHopVM
 PREFERRED_PROVIDER_libevent = "libevent-fb"
 PREFERRED_VERSION_libmemcached = "1.0.7"
