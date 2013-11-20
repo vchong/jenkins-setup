@@ -203,8 +203,10 @@ cleanup_soft()
     if [ -e "${WORKBASE}/sstate-cache" ]; then
         echo "soft cleanup at ${WORKBASE}"
         df -h ${WORKBASE}
+        extra_layers=`bitbake-layers show-layers | awk 'NR>2 {print $2}' | tr "\\n" ","`
+        echo $extra_layers
         ../openembedded-core/scripts/sstate-cache-management.sh --yes --remove-duplicated \
-                --extra-layer=../meta-linaro/meta-aarch64,../meta-linaro/meta-linaro,../meta-linaro/meta-linaro-toolchain,../meta-openembedded/meta-oe,../meta-openembedded/toolchain-layer,../meta-openembedded/meta-webserver \
+                --extra-layer=$extra_layers \
                 --cache-dir=${WORKBASE}/sstate-cache
         df -h ${WORKBASE}
         ../openembedded-core/scripts/cleanup-workdir
