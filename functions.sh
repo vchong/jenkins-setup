@@ -111,6 +111,7 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 # Don't build kernels on the CI
 # NOTE: this breaks recipes that build external kernel modules
 PREFERRED_PROVIDER_virtual/kernel = "linux-dummy"
+PREFERRED_PROVIDER_virtual/kernel_qemux86 = "linux-yocto"
 
 # some options needed for HipHopVM
 PREFERRED_PROVIDER_libevent = "libevent-fb"
