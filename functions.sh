@@ -77,6 +77,12 @@ conf_siteconf()
 {
 # Add some Linaro related options
 
+if [ "${arch}" = "x86" ] ; then
+    machinearch="qemu${arch}"
+else
+    machinearch="generic${arch}"
+fi
+
 cat > conf/site.conf <<EOF
 SCONF_VERSION = "1"
 # specify the alignment of the root file system
@@ -86,7 +92,7 @@ IMAGE_ROOTFS_ALIGNMENT = "2048"
 # to save space we remove source after build
 INHERIT += "rm_work"
 
-MACHINE ?= "generic${arch}"
+MACHINE ?= "${machinearch}"
 
 # Prefer hardfloat, the OE default is softfp for cortex-A class devices
 DEFAULTTUNE_genericarmv7a ?= "armv7athf-neon"
