@@ -52,7 +52,22 @@ conf_bblayers()
 {
 # add required layers
 
-cat >> conf/bblayers.conf <<EOF
+cat > conf/bblayers.conf <<EOF
+# LAYER_CONF_VERSION is increased each time build/conf/bblayers.conf
+# changes incompatibly
+LCONF_VERSION = "5"
+
+BBPATH = "${TOPDIR}"
+BBFILES ?= ""
+
+BBLAYERS ?= " \
+  /build/linaro/build/openembedded-core/meta \
+  "
+
+BBLAYERS_NON_REMOVABLE ?= " \
+  /build/linaro/build/openembedded-core/meta \
+  "
+
 BBLAYERS  = '`realpath $PWD/../meta-openembedded/meta-oe`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-filesystems`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'
@@ -65,6 +80,7 @@ BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
 BBLAYERS += '`realpath $PWD/../meta-virtualization`'
 BBLAYERS += '`realpath $PWD/../meta-browser`'
 EOF
+
 if [[ -d ../poky ]]; then
     echo "BBLAYERS += '`realpath $PWD/../poky/meta`'">>conf/bblayers.conf
     echo "BBLAYERS += '`realpath $PWD/../poky/meta-yocto`'">>conf/bblayers.conf
