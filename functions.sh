@@ -57,7 +57,7 @@ cat > conf/bblayers.conf <<EOF
 # changes incompatibly
 LCONF_VERSION = "5"
 
-BBPATH = "${TOPDIR}"
+BBPATH = "\${TOPDIR}"
 BBFILES ?= ""
 
 BBLAYERS ?= " \
