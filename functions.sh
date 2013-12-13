@@ -229,6 +229,7 @@ cleanup_soft()
         extra_layers=`bitbake-layers show-layers | awk 'NR>2 {print $2}' | tr "\\n" ","`
         echo $extra_layers
         ../openembedded-core/scripts/sstate-cache-management.sh --yes --remove-duplicated \
+                -d -v \
                 --extra-layer=$extra_layers \
                 --cache-dir=${WORKBASE}/sstate-cache
         df -h ${WORKBASE}
