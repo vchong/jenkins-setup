@@ -59,6 +59,16 @@ show_setup
 
 git_clone_update
 
+# the purpose of the 'init' function is to prepare the <build> folder
+# the default init function suitable for Linaro Platform builds, but
+# the user can specify a custom function if needed. In any case, the
+# init function must ensure :
+#  - oe-init-build-env is called
+#  - path is changed to <build> folder
+#  - user configuration files (local.conf, bblayers.conf, ..) are
+#    created.
+# Once the build init is done, we are adding some Linaro CI specific
+# build options, when running on Jenkins.
 if [ -z "$init_env" ]; then
     init_env
 else

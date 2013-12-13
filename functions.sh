@@ -305,6 +305,7 @@ OPTIONS:
    -r      manifest repository
    -g      GCC version (4.7 or 4.8)
    -u      External Linaro toolchain URL
+   -i      custom workspace init function
    -v      Add -v[erbose] to bitbake invocation
 EOF
 }
