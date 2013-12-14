@@ -4,6 +4,7 @@
 release=13.06
 arch=armv8
 gcc=4.8
+numproc=`getconf _NPROCESSORS_ONLN`
 external_url=
 manifest_branch=${manifest_branch:-master}
 manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/manifest.git}
