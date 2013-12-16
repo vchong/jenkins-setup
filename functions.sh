@@ -280,12 +280,18 @@ init_env()
 # Enable some Linaro CI site specific options 
 init_env_linaro_ci()
 {
+    SSTATE_DIR="/mnt/ci_build/workspace/sstate-cache"
+
+    if [ -n "$sstatedir" ]; then
+        SSTATE_DIR="${SSTATE_DIR}/$sstatedir"
+    fi
+
     cat >> conf/site.conf <<EOF
 SCONF_VERSION = "1"
 
 # share downloads and sstate-cache between all builds
 DL_DIR = "/mnt/ci_build/workspace/downloads"
-SSTATE_DIR = "/mnt/ci_build/workspace/sstate-cache"
+SSTATE_DIR = "${SSTATE_DIR}"
 BB_GENERATE_MIRROR_TARBALLS = "True"
 
 IMAGE_NAME = "\${IMAGE_BASENAME}-\${MACHINE}-\${DATE}-${BUILD_NUMBER}"

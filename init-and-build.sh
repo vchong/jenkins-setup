@@ -10,12 +10,13 @@ manifest_branch=${manifest_branch:-master}
 manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/manifest.git}
 manifest_groups=
 bitbake_verbose=
+sstatedir=
 
 export PATH=$PATH:$HOME/bin
 
 source $(dirname $0)/functions.sh
 
-while getopts “ha:b:m:r:g:u:i:v” OPTION
+while getopts “ha:b:m:r:g:u:i:s:v” OPTION
 do
 	case $OPTION in
 		h)
@@ -42,6 +43,9 @@ do
 			;;
 		i)
 			init_env="$OPTARG"
+			;;
+		s)
+			sstatedir="$OPTARG"
 			;;
 		v)
 			bitbake_verbose="-v"
