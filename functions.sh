@@ -223,15 +223,17 @@ conf_localconf()
 
 cleanup_soft()
 {
-    if [ -e "${WORKBASE}/sstate-cache" ]; then
-        echo "soft cleanup at ${WORKBASE}"
+    sstate_dir=`bitbake -e | grep "^SSTATE_DIR="| cut -d'=' -f2 | tr -d '"'`
+
+    if [ -e "$sstate_dir" ]; then
+        echo "soft cleanup at $sstate_dir"
         df -h ${WORKBASE}
         extra_layers=`bitbake-layers show-layers | awk 'NR>2 {print $2}' | tr "\\n" ","`
         echo $extra_layers
         ../openembedded-core/scripts/sstate-cache-management.sh --yes --remove-duplicated \
                 -d -v \
                 --extra-layer=$extra_layers \
-                --cache-dir=${WORKBASE}/sstate-cache
+                --cache-dir=$sstate_dir
         df -h ${WORKBASE}
         ../openembedded-core/scripts/cleanup-workdir
         df -h ${WORKBASE}
@@ -245,7 +247,10 @@ cleanup_hard()
     if [ -n "${WORKBASE}" ]; then
         echo "hard cleanup at ${WORKBASE}"
         df -h ${WORKBASE}
-        rm -rf ${WORKBASE}/sstate-cache
+        sstate_dir=`bitbake -e | grep "^SSTATE_DIR="| cut -d'=' -f2 | tr -d '"'`
+        if [ -n "$sstate_dir" ]; then
+            rm -rf $sstate_dir
+        fi
         #rm -rf ${WORKBASE}/downloads
         df -h ${WORKBASE}
     fi
