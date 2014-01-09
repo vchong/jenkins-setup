@@ -205,8 +205,11 @@ conf_jenkins()
 conf_localconf()
 {
     # get rid of MACHINE setting from local.conf
+    # also disable SDL support in qemu-native
 
-    sed -i -e "s/^MACHINE.*//g" conf/local.conf
+    sed -i -e "s/^MACHINE.*//g" \
+           -e "/PACKAGECONFIG_pn-qemu-native/d" \
+           conf/local.conf
 }
 
 cleanup_soft()
