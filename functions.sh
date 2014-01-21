@@ -70,6 +70,7 @@ BBLAYERS_NON_REMOVABLE ?= " \
 
 BBLAYERS  = '`realpath $PWD/../meta-openembedded/meta-oe`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-filesystems`'
+BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-initramfs`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-webserver`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-networking`'
 BBLAYERS += '`realpath $PWD/../meta-openembedded/meta-gnome`'
