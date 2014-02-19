@@ -125,7 +125,7 @@ IMAGE_LINGUAS = "en-gb"
 
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
-BINUVERSION      ?= "2.24"
+BINUVERSION      ?= "linaro-2.24"
 EGLIBCVERSION    ?= "2.18"
 
 # some options needed for Linaro images
