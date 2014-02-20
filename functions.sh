@@ -116,8 +116,8 @@ DEFAULTTUNE_genericarmv7a ?= "armv7athf-neon"
 DEFAULTTUNE_genericarmv7ab ?= "armv7athfb-neon"
 
 # those numbers can be tweaked if build takes too much power
-BB_NUMBER_THREADS = "${numproc}"
-PARALLEL_MAKE = "-j${numproc}"
+# BB_NUMBER_THREADS = "${numproc}"
+# PARALLEL_MAKE = "-j${numproc}"
 
 # add 'ext2' if you want images for fast models
 IMAGE_FSTYPES = "tar.gz"
