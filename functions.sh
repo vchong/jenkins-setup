@@ -126,7 +126,9 @@ IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 BINUVERSION      ?= "linaro-2.24"
-EGLIBCVERSION    ?= "linaro-2.19"
+# meta-linaro only has a recipe for eglibc, not for eglibc-initial and friends.
+# EGLIBCVERSION    ?= "linaro-2.19"
+PREFERRED_VERSION_eglibc ?= "linaro-2.19"
 
 # some options needed for Linaro images
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
