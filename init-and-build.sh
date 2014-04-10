@@ -85,5 +85,5 @@ if [ -n "${WORKSPACE}" ]; then
     cleanup_auto
 fi
 
-bitbake gcc-cross || true
+#bitbake gcc-cross || true
 bitbake $bitbake_verbose $@
