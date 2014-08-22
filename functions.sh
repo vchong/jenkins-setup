@@ -125,8 +125,8 @@ INHERIT += "rm_work"
 MACHINE ?= "${machinearch}"
 
 # Prefer hardfloat, the OE default is softfp for cortex-A class devices
-DEFAULTTUNE_genericarmv7a ?= "armv7athf-neon"
-DEFAULTTUNE_genericarmv7ab ?= "armv7athfb-neon"
+DEFAULTTUNE_genericarmv7a ?= "armv7athf"
+DEFAULTTUNE_genericarmv7ab ?= "armv7athfb"
 
 # those numbers can be tweaked if build takes too much power
 # BB_NUMBER_THREADS = "${numproc}"
