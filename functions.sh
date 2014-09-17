@@ -140,9 +140,7 @@ IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 BINUVERSION      ?= "linaro-2.24"
-# meta-linaro only has a recipe for eglibc, not for eglibc-initial and friends.
-# EGLIBCVERSION    ?= "linaro-2.19"
-PREFERRED_VERSION_eglibc ?= "linaro-2.19"
+GLIBCVERSION     = "linaro-2.19"
 
 # some options needed for Linaro images
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
@@ -155,6 +153,8 @@ PREFERRED_PROVIDER_virtual/kernel_qemux86 = "linux-yocto"
 # some options needed for HipHopVM
 PREFERRED_PROVIDER_libevent = "libevent-fb"
 PREFERRED_VERSION_libmemcached = "1.0.7"
+
+TCLIBC = "glibc"
 
 # Need this for the netperf package.
 LICENSE_FLAGS_WHITELIST = "non-commercial"
