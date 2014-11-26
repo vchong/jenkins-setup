@@ -178,6 +178,11 @@ conf_toolchain()
         set -xe
         echo 'TCMODE = "external-linaro"' >>conf/site.conf
         tarball_name=`echo $external_url | cut -d "/" -f 8`
+
+        if [ -z $tarball_name ] ; then
+            tarball_name=`echo $external_url | cut -d "/" -f 7`
+        fi
+
         mkdir -p toolchain
 
         if [ -n "${WORKSPACE}" ]; then
