@@ -176,7 +176,12 @@ conf_toolchain()
 {
     if [ $external_url ];then
         set -xe
+
         echo 'TCMODE = "external-linaro"' >>conf/site.conf
+        echo 'PNBLACKLIST[glibc] = "Using external toolchain"' >>conf/site.conf
+        echo 'PNBLACKLIST[libgcc] = "Using external toolchain"' >>conf/site.conf
+        echo 'PNBLACKLIST[gcc-cross] = "Using external toolchain"' >>conf/site.conf
+
         tarball_name=`echo $external_url | cut -d "/" -f 8`
 
         if [ -z $tarball_name ] ; then
