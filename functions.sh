@@ -162,6 +162,9 @@ TCLIBC = "glibc"
 # Need this for the netperf package.
 LICENSE_FLAGS_WHITELIST = "non-commercial"
 
+# Don't drag in dpdk
+PACKAGECONFIG_pn-openvswitch = ""
+
 EOF
 
 if [[ -d ../poky ]]; then
