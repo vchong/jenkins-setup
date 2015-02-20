@@ -24,6 +24,7 @@ show_setup()
     echo "Manifest groups: $manifest_groups"
     echo "Init env: $init_env"
     echo "Verbose: $bitbake_verbose"
+    echo "Local download directory: $LOCALDLDIR"
 
     if [ $external_url ]; then
         echo "External toolchain URL: $external_url"
@@ -176,6 +177,15 @@ fi
 
 # enable a distro feature that is compatible with the minimal goal we have
 echo 'DISTRO_FEATURES = "pam x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf opengl ${DISTRO_FEATURES_LIBC} ${DISTRO_FEATURES_INITMAN}"' >>conf/site.conf
+
+# allow the user to specify a local, pre-existing download directory
+if [ -n "$LOCALDLDIR" ]; then
+    cat >> conf/site.conf <<EOF
+
+# use a pre-existing download directory
+DL_DIR = "$LOCALDLDIR"
+EOF
+fi
 }
 
 conf_toolchain()
