@@ -162,8 +162,8 @@ TCLIBC = "glibc"
 # Need this for the netperf package.
 LICENSE_FLAGS_WHITELIST = "non-commercial"
 
-# Don't drag in dpdk
-PACKAGECONFIG_pn-openvswitch = ""
+# fix openvswitch to avoid problems with latest recipe
+PREFERRED_VERSION_openvswitch = "2.1.3"
 
 EOF
 
