@@ -55,7 +55,12 @@ do
 	esac
 done
 
-if [ -z "$tree" ] || [ -z "$branch" ] ; then
+if [ -z "$tree" ] ; then
+    tree="ssh://git@git.linaro.org/openembedded/buildhistory.git"
+    echo "No tree specified, defaulting to $tree"
+fi
+
+if  [ -z "$branch" ] ; then
     usage
     exit 1
 fi
@@ -67,12 +72,16 @@ fi
 
 if [ ! -z "$buildhistory_dir" ] && [ -d $buildhistory_dir ]; then
     rm -rf _buildhistory
-    git clone $tree -b $branch _buildhistory
-    cp -a $buildhistory_dir/* _buildhistory/
+    git clone $tree _buildhistory
+    ( cd _buildhistory ; git checkout origin/$branch -b $branch || git checkout -b $branch ; cd .. )
+    cp -a $buildhistory_dir/[A-z]* _buildhistory/
     cd _buildhistory
     git add -A
     git commit --allow-empty -m "Build : ${BUILD_NUMBER}"
     git push origin HEAD:$branch
+
+    # Output the most important changes to stdout
+    ${WORKSPACE}/openembedded-core/scripts/buildhistory-diff --buildhistory-dir=$PWD HEAD~1 HEAD || true
 else
     echo "Build history not found"
 fi
