@@ -23,6 +23,7 @@ manifest_repository=${manifest_repository:-git://git.linaro.org/openembedded/man
 manifest_groups=
 bitbake_verbose=
 sstatedir=
+binarytoolchain="aarch64-linux-gnu"
 
 export PATH=$PATH:$HOME/bin
 

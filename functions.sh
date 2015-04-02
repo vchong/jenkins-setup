@@ -205,6 +205,10 @@ conf_toolchain()
             tarball_name=`echo $external_url | cut -d "/" -f 7`
         fi
 
+        if [ -z $tarball_name ] ; then
+            tarball_name=`echo $external_url | cut -d "/" -f 6`
+        fi
+
         mkdir -p toolchain
 
         if [ -n "${WORKSPACE}" ]; then
