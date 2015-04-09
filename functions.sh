@@ -125,6 +125,10 @@ IMAGE_ROOTFS_ALIGNMENT = "2048"
 # to save space we remove source after build
 INHERIT += "rm_work"
 
+# Enable buildhistory to make tracking package changes easier
+# NOTE: BUILDHISTORY_COMMIT is disabled, so the overhead is kept minimal
+INHERIT += "buildhistory"
+
 MACHINE ?= "${machinearch}"
 
 # Prefer hardfloat, the OE default is softfp for cortex-A class devices
