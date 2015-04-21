@@ -17,9 +17,10 @@
 # periodic maintainence for OE builders
 
 job=soft
+base_dir="/mnt/ci_build"
 
 source functions.sh
-WORKBASE=/mnt/ci_build/workspace
+WORKBASE=${base_dir}/workspace
 
 while getopts “w:x:” OPTION
 do

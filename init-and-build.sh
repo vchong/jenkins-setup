@@ -24,6 +24,7 @@ manifest_groups=
 bitbake_verbose=
 sstatedir=
 binarytoolchain="aarch64-linux-gnu"
+base_dir="/mnt/ci_build"
 
 export PATH=$PATH:$HOME/bin
 
@@ -69,7 +70,7 @@ done
 shift $(( OPTIND-1 ))
 
 if [ -n "${WORKSPACE}" ]; then
-    WORKBASE=/mnt/ci_build/workspace
+    WORKBASE=${base_dir}/workspace
 fi
 
 show_setup

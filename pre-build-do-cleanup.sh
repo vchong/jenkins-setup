@@ -12,19 +12,21 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>
 
+base_dir="/mnt/ci_build"
+
 if [ -n "${WORKSPACE}" ]; then
     # clean builds from all jobs to get disk space back
     find ${WORKSPACE} -type d -name build | xargs rm -rf
 
     # clean shared tmpdir
-    rm -rf /mnt/ci_build/workspace/tmp || true
+    rm -rf ${base_dir}/workspace/tmp || true
 
     # those should not exist but they may
     find ${WORKSPACE} -type d -name downloads | xargs rm -rf
 
     # || true as some of those dirs may not exist
     du -hs ${WORKSPACE} \
-       /mnt/ci_build/workspace/downloads \
-       /mnt/ci_build/workspace/sstate-cache || true
+       ${base_dir}/workspace/downloads \
+       ${base_dir}/workspace/sstate-cache || true
     df -h
 fi

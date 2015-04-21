@@ -16,7 +16,7 @@ rm -rf ${WORKSPACE}/downloads
 mkdir -p ${WORKSPACE}/downloads
 
 pushd ${WORKSPACE}/downloads
-cp /mnt/ci_build/workspace/downloads/* .
+cp ${base_dir}/workspace/downloads/* .
 rm *.done
 
 # remove all sources which were already pushed

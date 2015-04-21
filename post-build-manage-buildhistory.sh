@@ -35,6 +35,7 @@ OPTIONS:
 EOF
 }
 
+base_dir="/mnt/ci_build"
 
 while getopts “hb:r:v” OPTION
 do
@@ -67,7 +68,7 @@ fi
 
 buildhistory_dir=`find build -maxdepth 2 -type d -name buildhistory`
 if [ ! -d $buildhistory_dir ]; then
-	buildhistory_dir=`find /mnt/ci_build/workspace/tmp -type d -name buildhistory`
+	buildhistory_dir=`find ${base_dir}/workspace/tmp -type d -name buildhistory`
 fi
 
 if [ ! -z "$buildhistory_dir" ] && [ -d $buildhistory_dir ]; then

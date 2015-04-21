@@ -206,14 +206,14 @@ conf_toolchain()
         echo 'PNBLACKLIST[libgcc] = "Using external toolchain"' >>conf/site.conf
         echo 'PNBLACKLIST[gcc-cross] = "Using external toolchain"' >>conf/site.conf
 
-        tarball_name=`echo $external_url | cut -d "/" -f 8`
+        tarball_name=`basename $external_url`
 
         if [ -z $tarball_name ] ; then
-            tarball_name=`echo $external_url | cut -d "/" -f 7`
+            tarball_name=`basename $external_url`
         fi
 
         if [ -z $tarball_name ] ; then
-            tarball_name=`echo $external_url | cut -d "/" -f 6`
+            tarball_name=`basename $external_url`
         fi
 
         mkdir -p toolchain
@@ -249,10 +249,10 @@ conf_toolchain()
 conf_jenkins()
 {
     if [ -n "${WORKSPACE}" ]; then
-        # As noted during jdk8 integration, toolchain has stubble ties to the build location. Thus in
+        # As noted during jdk8 integration, toolchain has subtle ties to the build location. Thus in
         # jenkins use same tmpdir for all builds. 
         # XXX: make this tmpfs, 10G of ram should be enough
-        echo 'TMPDIR = "/mnt/ci_build/workspace/tmp"' >>conf/site.conf
+        echo 'TMPDIR = "${base_dir}/workspace/tmp"' >>conf/site.conf
         echo 'TCLIBCAPPEND = ""' >>conf/site.conf
     fi
 }
@@ -338,7 +338,7 @@ init_env()
 # Enable some Linaro CI site specific options 
 init_env_linaro_ci()
 {
-    SSTATE_DIR="/mnt/ci_build/workspace/sstate-cache"
+    SSTATE_DIR="${base_dir}/workspace/sstate-cache"
 
     if [ -n "$sstatedir" ]; then
         SSTATE_DIR="${SSTATE_DIR}/$sstatedir"
@@ -348,7 +348,7 @@ init_env_linaro_ci()
 SCONF_VERSION = "1"
 
 # share downloads and sstate-cache between all builds
-DL_DIR = "/mnt/ci_build/workspace/downloads"
+DL_DIR = "${base_dir}/workspace/downloads"
 SSTATE_DIR = "${SSTATE_DIR}"
 BB_GENERATE_MIRROR_TARBALLS = "True"
 
@@ -371,12 +371,12 @@ This script initialize and run OpenEmbedded builds with Linaro settings.
 OPTIONS:
    -h      Show this message
    -a      Target architecture (armv7a or armv8)
-   -b      manifest branch
-   -m      manifest groups
-   -r      manifest repository
-   -g      GCC version (4.7 or 4.8)
+   -b      Manifest branch
+   -m      Manifest groups
+   -r      Manifest repository
+   -g      GCC version (e.g. x.y)
    -u      External Linaro toolchain URL
-   -i      custom workspace init function
+   -i      Custom workspace init function
    -v      Add -v[erbose] to bitbake invocation
 EOF
 }
