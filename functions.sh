@@ -171,6 +171,9 @@ LICENSE_FLAGS_WHITELIST = "non-commercial"
 # fix openvswitch to avoid problems with latest recipe
 PREFERRED_VERSION_openvswitch = "2.1.3"
 
+# Work around old u-boots needing 'arm' instead of 'arm64'
+UBOOT_ARCH_aarch64 = "arm"
+
 EOF
 
 if [[ -d ../poky ]]; then
