@@ -25,6 +25,7 @@ show_setup()
     echo "Init env: $init_env"
     echo "Verbose: $bitbake_verbose"
     echo "Local download directory: $LOCALDLDIR"
+    echo "Enable ptest: $ptest_enabled"
 
     if [ $external_url ]; then
         echo "External toolchain URL: $external_url"
@@ -265,6 +266,10 @@ conf_localconf()
     sed -i -e "s/^MACHINE.*//g" \
            -e "/PACKAGECONFIG_pn-qemu-native/d" \
            conf/local.conf
+
+    if [ "$ptest_enabled" = "1" ]; then
+        echo 'DISTRO_FEATURES += "ptest"' >> conf/local.conf
+    fi
 }
 
 cleanup_soft()

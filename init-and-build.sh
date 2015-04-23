@@ -25,12 +25,13 @@ bitbake_verbose=
 sstatedir=
 binarytoolchain="aarch64-linux-gnu"
 base_dir="/mnt/ci_build"
+ptest_enabled=0
 
 export PATH=$PATH:$HOME/bin
 
 source $(dirname $0)/functions.sh
 
-while getopts “ha:b:m:r:g:u:i:s:v” OPTION
+while getopts “ha:b:m:r:g:u:i:s:vp” OPTION
 do
 	case $OPTION in
 		h)
@@ -63,6 +64,9 @@ do
 			;;
 		v)
 			bitbake_verbose="-v"
+			;;
+		p)
+			ptest_enabled=1
 			;;
 	esac
 done
