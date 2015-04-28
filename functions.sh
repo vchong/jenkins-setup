@@ -252,7 +252,7 @@ conf_jenkins()
         # As noted during jdk8 integration, toolchain has subtle ties to the build location. Thus in
         # jenkins use same tmpdir for all builds. 
         # XXX: make this tmpfs, 10G of ram should be enough
-        echo 'TMPDIR = "${base_dir}/workspace/tmp"' >>conf/site.conf
+        echo "TMPDIR = \"${base_dir}/workspace/tmp\"" >>conf/site.conf
         echo 'TCLIBCAPPEND = ""' >>conf/site.conf
     fi
 }
