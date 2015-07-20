@@ -111,7 +111,7 @@ conf_siteconf()
 {
 # Add some Linaro related options
 
-if [ "${arch}" = "x86" ] ; then
+if [ "${arch}" = "x86" ] || [ "${arch}" = "x86-64" ]; then
     machinearch="qemu${arch}"
 else
     machinearch="generic${arch}"
