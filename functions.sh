@@ -274,6 +274,8 @@ conf_localconf()
     if [ "$ptest_enabled" = "1" ]; then
         echo 'DISTRO_FEATURES += "ptest"' >> conf/local.conf
     fi
+
+    echo 'OLDEST_KERNEL_aarch64 = "2.6.32"' >> conf/local.conf
 }
 
 cleanup_soft()
