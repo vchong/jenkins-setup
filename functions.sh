@@ -189,7 +189,7 @@ EOF
 fi
 
 # enable a distro feature that is compatible with the minimal goal we have
-echo 'DISTRO_FEATURES = "pam x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf opengl ${DISTRO_FEATURES_LIBC} ${DISTRO_FEATURES_INITMAN}"' >>conf/site.conf
+echo 'DISTRO_FEATURES = "pam x11 alsa argp ext2 largefile usbgadget usbhost xattr nfs zeroconf opengl ${DISTRO_FEATURES_LIBC} systemd"' >>conf/site.conf
 
 # allow the user to specify a local, pre-existing download directory
 if [ -n "$LOCALDLDIR" ]; then
