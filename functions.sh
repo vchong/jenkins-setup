@@ -159,6 +159,7 @@ PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 # NOTE: this breaks recipes that build external kernel modules
 PREFERRED_PROVIDER_virtual/kernel = "${linux_kernel:-linux-dummy}"
 PREFERRED_PROVIDER_virtual/kernel_qemux86 = "linux-yocto"
+PREFERRED_PROVIDER_virtual/kernel_qemux86-64 = "linux-yocto"
 PREFERRED_VERSION_lng-x86-64 = "${linux_kernel_version:-3.14}"
 PREFERRED_VERSION_lng-rt-x86-64 = "${linux_kernel_version:-3.14}"
 
