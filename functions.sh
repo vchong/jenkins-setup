@@ -147,7 +147,7 @@ IMAGE_LINGUAS = "en-gb"
 GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 BINUVERSION      ?= "linaro-2.%"
-GLIBCVERSION     = "linaro-2.20"
+#GLIBCVERSION     = "linaro-2.20"
 LINUXLIBCVERSION = "3.18"
 
 PREFERRED_VERSION_gcc-source ?= "${GCCVERSION}"
