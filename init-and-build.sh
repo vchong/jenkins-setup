@@ -15,7 +15,7 @@
 # set some defaults
 release=13.06
 arch=armv8
-gcc=4.9
+gcc=5.2
 numproc=`getconf _NPROCESSORS_ONLN`
 external_url=
 manifest_branch=${manifest_branch:-master}
