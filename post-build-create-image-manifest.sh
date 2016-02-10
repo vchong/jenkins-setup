@@ -89,4 +89,11 @@ if [ -n "${WORKSPACE}" ]; then
 			fi
 		done
 	fi
+
+	# Add md5sums for all build artefacts
+	for f in $(find ${WORKSPACE}/out) ; do
+		if [ -f "f" ] ; then
+			md5sum $f > ${f}.md5
+		fi
+	done
 fi
