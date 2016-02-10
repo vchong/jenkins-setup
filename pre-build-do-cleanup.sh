@@ -29,4 +29,9 @@ if [ -n "${WORKSPACE}" ]; then
        ${base_dir}/workspace/downloads \
        ${base_dir}/workspace/sstate-cache || true
     df -h
+
+    # Discard changes in working directory
+    if [[ -d ${WORKSPACE}/.repo ]]; then
+       ( cd ${WORKSPACE} && repo sync --force-sync )
+    fi
 fi
