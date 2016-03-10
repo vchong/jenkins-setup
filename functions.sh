@@ -229,9 +229,14 @@ conf_toolchain()
             local_tarball_name=toolchain/$tarball_name
         fi
 
-        if [ ! -e $local_tarball_name ];then
-            wget -cv $external_url -O $local_tarball_name
-        fi
+	protocol="`echo $external_url | cut -d ':' -f 1`"
+	if test $protocol = "file"; then
+	    local_tarball_name="`echo $external_url | sed -e 's:file./::'`"
+	else
+            if [ ! -e $local_tarball_name ];then
+		wget -cv $external_url -O $local_tarball_name
+            fi
+	fi
         md5sum $local_tarball_name
         tar xf $local_tarball_name -C toolchain
 
