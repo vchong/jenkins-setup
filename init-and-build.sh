@@ -105,3 +105,8 @@ fi
 
 #bitbake gcc-cross || true
 bitbake $bitbake_verbose $@
+# propagate bad return codes to caller
+rc=$?
+if [[ $rc != 0 ]] ; then
+    exit $rc
+fi
