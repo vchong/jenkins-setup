@@ -272,7 +272,7 @@ conf_localconf()
     # also disable SDL support in qemu-native
 
     sed -i -e "s/^MACHINE.*//g" \
-           -e "/PACKAGECONFIG_pn-qemu-native/d" \
+           -e "/PACKAGECONFIG_append_pn-qemu-native/d" \
            conf/local.conf
 
     if [ "$ptest_enabled" = "1" ]; then
