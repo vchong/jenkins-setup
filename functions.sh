@@ -95,6 +95,7 @@ BBLAYERS += '`realpath $PWD/../meta-linaro/meta-bigendian`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-toolchain`'
 BBLAYERS += '`realpath $PWD/../meta-linaro/meta-linaro-integration`'
+BBLAYERS += '`realpath $PWD/../meta-linaro/meta-optee`'
 BBLAYERS += '`realpath $PWD/../meta-virtualization`'
 BBLAYERS += '`realpath $PWD/../meta-browser`'
 EOF
