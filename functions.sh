@@ -149,7 +149,7 @@ GCCVERSION       ?= "linaro-${gcc}"
 SDKGCCVERSION    ?= "linaro-${gcc}"
 BINUVERSION      ?= "linaro-2.%"
 #GLIBCVERSION     = "linaro-2.20"
-LINUXLIBCVERSION = "3.18"
+LINUXLIBCVERSION_genericarmv8-ilp32 = "3.18"
 
 PREFERRED_VERSION_gcc-source ?= "${GCCVERSION}"
 
