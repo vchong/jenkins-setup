@@ -153,6 +153,10 @@ LINUXLIBCVERSION_genericarmv8-ilp32 = "3.18"
 
 PREFERRED_VERSION_gcc-source ?= "${GCCVERSION}"
 
+# Fix acpica build errors
+PREFERRED_VERSION_flex = "2.6.0"
+PREFERRED_VERSION_flex-native = "2.6.0"
+
 # some options needed for Linaro images
 PREFERRED_PROVIDER_jpeg = "libjpeg-turbo"
 
