@@ -12,7 +12,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>
 
-base_dir="${base_dir:-/mnt/ci_build}"
+base_dir="${base_dir:-/home/victor.chong/work/96b/oe-rpb/jenkins-setup}"
 
 rm -rf ${WORKSPACE}/downloads
 mkdir -p ${WORKSPACE}/downloads

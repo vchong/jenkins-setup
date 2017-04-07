@@ -24,7 +24,7 @@ manifest_groups=
 bitbake_verbose=
 sstatedir=
 binarytoolchain="aarch64-linux-gnu"
-base_dir="/mnt/ci_build"
+base_dir="/home/victor.chong/work/96b/oe-rpb/jenkins-setup"
 ptest_enabled=0
 
 export PATH=$PATH:$HOME/bin

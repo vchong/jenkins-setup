@@ -17,7 +17,7 @@
 # periodic maintainence for OE builders
 
 job=soft
-base_dir="/mnt/ci_build"
+base_dir="/home/victor.chong/work/96b/oe-rpb/jenkins-setup"
 
 source functions.sh
 WORKBASE=${base_dir}/workspace

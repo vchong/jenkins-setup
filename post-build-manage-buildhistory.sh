@@ -35,7 +35,7 @@ OPTIONS:
 EOF
 }
 
-base_dir="/mnt/ci_build"
+base_dir="/home/victor.chong/work/96b/oe-rpb/jenkins-setup"
 
 while getopts “hb:r:v” OPTION
 do

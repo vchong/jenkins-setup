@@ -12,7 +12,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>
 
-base_dir="/mnt/ci_build"
+base_dir="/home/victor.chong/work/96b/oe-rpb/jenkins-setup"
 
 if [ -n "${WORKSPACE}" ]; then
     # clean builds from all jobs to get disk space back
